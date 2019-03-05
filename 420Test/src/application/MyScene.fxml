@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="root" prefHeight="355.0" prefWidth="441.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MyController">
+			
+   <children>
+      <MenuBar layoutX="3.0" AnchorPane.bottomAnchor="323.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#closeApp" text="Close" />
+               </items></Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#createRectangle" text="Create Node" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <SplitPane dividerPositions="0.7835990888382688" layoutX="-3.0" layoutY="20.0" prefHeight="325.0" prefWidth="259.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+        <items>
+          <AnchorPane id="nodeSpace" fx:id="nodeSpace" minHeight="0.0" minWidth="0.0" prefHeight="219.0" prefWidth="73.0" />
+          <AnchorPane id="properties" fx:id="properties" />
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
