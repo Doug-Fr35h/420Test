@@ -7,7 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-// Runs the programs
+// Runs the programs9875018709409870987098709879986598
 public class MyApplication extends Application {
     
   
@@ -18,9 +18,7 @@ public class MyApplication extends Application {
             Parent root = FXMLLoader.load(getClass().getResource("/MyScene.fxml"));
             primaryStage.setTitle("SpeghettiForZoppetti UML Editor");
             primaryStage.setScene(new Scene(root));
-            primaryStage.show();
-            
-            
+            primaryStage.show(); 
          
         } catch(Exception e) {
             e.printStackTrace();
