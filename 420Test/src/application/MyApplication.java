@@ -17,9 +17,7 @@ public class MyApplication extends Application {
             Parent root = FXMLLoader.load(getClass().getResource("/MyScene.fxml"));
             primaryStage.setTitle("SpeghettiForZoppetti UML Editor");
             primaryStage.setScene(new Scene(root));
-            primaryStage.show();
-            
-            
+            primaryStage.show(); 
          
         } catch(Exception e) {
             e.printStackTrace();
