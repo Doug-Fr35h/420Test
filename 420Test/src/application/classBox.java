@@ -6,6 +6,9 @@ public class classBox {
 	String attributes;
 	String operations;
 	String extraComponents;
+	double xLocation;
+	double yLocation;
+	
 
 	//CONSTRUCTOR
 	public classBox() {
@@ -13,6 +16,8 @@ public class classBox {
 		this.attributes = "-";
 		this.operations = "-";
 		this.extraComponents = "";
+		this.xLocation = 20.; // PREFER TO SET THIS TO MOUSE LOCATION
+		this.yLocation = 20.; // ANYBODY KNOW ANYTHING ABOUT THAT?
 	}
 	
 	//---setters ---
@@ -38,6 +43,12 @@ public class classBox {
 		extraComponents = newEC;
 	}
 	
+	//set/update location
+	public void updateLocation(double x, double y){
+		xLocation = x;
+		yLocation = y;
+	}
+	
 	//---getters---
 	public String getTitle(){
 		return this.title;
@@ -53,6 +64,14 @@ public class classBox {
 	
 	public String getExtraComponents(){
 		return extraComponents;
+	}
+	
+	//get location
+	public double getXLocation(){
+		return xLocation;
+	}
+	public double getYLocation(){
+		return yLocation;
 	}
 	
 }
