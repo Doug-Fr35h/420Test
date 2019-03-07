@@ -2,12 +2,12 @@ package application;
 
 public class classBox {
 	
-	String title;
-	String attributes;
-	String operations;
-	String extraComponents;
-	double xLocation;
-	double yLocation;
+	private String title;
+	private String attributes;
+	private String operations;
+	private String extraComponents;
+	private double xLocation;
+	private double yLocation;
 	
 
 	//CONSTRUCTOR
@@ -26,10 +26,10 @@ public class classBox {
 	}
 	
 	/*
-	 * NOTE: These (as multi-lined text boxes, may require some
+	 *  NOTE: These (as multi-lined text boxes, may require some
 	 * additional finangling later on to include multiple lines
 	 * I'm thinking like a while(hasNext), +=current line + \n
-	 * kind of situation
+	 * kind of situation 
 	 */
 	public void setAttributes(String newAttr){
 		this.attributes = newAttr;
