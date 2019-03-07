@@ -1,0 +1,11 @@
+Major:
+- Delete Rectangle
+- Property Bar
+- New
+- Open
+- Save/Save as
+- Export
+
+Minor:
+- Undo
+- Redo
