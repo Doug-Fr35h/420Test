@@ -8,6 +8,7 @@ public class classBox {
 	private String extraComponents;
 	private double xLocation;
 	private double yLocation;
+	private relationship[] connections;
 	
 
 	//CONSTRUCTOR
