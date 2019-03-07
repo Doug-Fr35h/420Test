@@ -16,6 +16,8 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.RectangleBuilder;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.MenuItem;
@@ -59,8 +61,17 @@ public class MyController implements Initializable {
 		newRec.setOnMousePressed(rectangleOnMousePressedEventHandler);
 		newRec.setOnMouseDragged(rectangleOnMouseDraggedEventHandler);
 		nodeSpace.getChildren().add(newRec);
+		Text title = new Text();
+		title.setText("Title");
          
 	}
+	
+	/*public class Agent extends Rectangle {
+		public Agent() {
+			Text text = new Text("Title");
+			
+		}
+	}*/
 	
 	public void drag(MouseEvent event) {
 		Node n = (Node) event.getSource();
