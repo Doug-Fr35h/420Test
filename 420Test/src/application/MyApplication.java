@@ -1,4 +1,3 @@
-//test
 package application;
 
 import javafx.application.Application;
