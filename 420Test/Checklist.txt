@@ -4,8 +4,10 @@ Major:
 - New
 - Open
 - Save/Save as
-- Export
+- Export to PDF
 
 Minor:
 - Undo
 - Redo
+- Cut/Copy/Paste
+- Keyboard Shortcuts
