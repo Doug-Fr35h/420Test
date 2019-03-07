@@ -25,10 +25,10 @@ public class MyController implements Initializable {
 	@FXML
 	private AnchorPane root;
 	
-
+/*
 	@FXML
 	private Rectangle newRec;
-
+*/
 	@FXML
 	private AnchorPane nodeSpace;
 
@@ -48,8 +48,8 @@ public class MyController implements Initializable {
 
 	}
 
-	public void createRectangle(ActionEvent event) {
-		newRec = new Rectangle(30, 40, 100, 150);
+	public Rectangle createRectangle(ActionEvent event) {
+		Rectangle newRec = new Rectangle(30, 40, 100, 150);
 
 		newRec.setFill(Color.WHITE);
 
@@ -59,6 +59,8 @@ public class MyController implements Initializable {
 		newRec.setOnMousePressed(rectangleOnMousePressedEventHandler);
 		newRec.setOnMouseDragged(rectangleOnMouseDraggedEventHandler);
 		nodeSpace.getChildren().add(newRec);
+		
+		return newRec;
          
 	}
 	
