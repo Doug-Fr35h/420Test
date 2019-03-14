@@ -28,12 +28,25 @@
               
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="View">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#toggleWindow" text="(TEST) Toggle Properties " />
+              </items>
+            </Menu>
         </menus>
       </MenuBar>
       <SplitPane dividerPositions="0.7835990888382688" layoutX="-3.0" layoutY="20.0" prefHeight="325.0" prefWidth="259.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
         <items>
           <AnchorPane id="nodeSpace" fx:id="nodeSpace" minHeight="0.0" minWidth="0.0" prefHeight="219.0" prefWidth="73.0" />
-          <AnchorPane id="properties" fx:id="properties" />
+          <AnchorPane id="properties" fx:id="properties">
+               <children>
+                  <AnchorPane fx:id="creationPane" prefHeight="323.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Button fx:id="createNode" layoutX="7.0" layoutY="22.0" mnemonicParsing="false" text="Create Node" textAlignment="CENTER" wrapText="true" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="nodePropPane" disable="true" prefHeight="323.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children></AnchorPane>
         </items>
       </SplitPane>
    </children>

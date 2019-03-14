@@ -27,6 +27,12 @@ public class MyController implements Initializable {
 	@FXML
 	private AnchorPane root;
 	
+	@FXML
+    private AnchorPane nodePropPane;
+
+    @FXML
+    private AnchorPane creationPane;
+	
 /*
 	@FXML
 	private Rectangle newRec;
@@ -103,6 +109,16 @@ public class MyController implements Initializable {
 		}
 
 	};
+	@FXML
+	public void toggleWindow () 
+	{
+		if ( nodePropPane.isVisible() == true && creationPane.isVisible() == false)
+		{
+			nodePropPane.setVisible(false);
+			creationPane.setVisible(true);
+		}
+		
+	}
 	
 	@FXML
 	public void closeApp() 
