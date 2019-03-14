@@ -85,6 +85,9 @@ public class MyController implements Initializable {
 			orgSceneY = t.getSceneY();
 			orgTranslateX = ((Rectangle) (t.getSource())).getTranslateX();
 			orgTranslateY = ((Rectangle) (t.getSource())).getTranslateY();
+			nodePropPane.setVisible(true);
+			creationPane.setVisible(false);
+			
 		}
 	};
 
@@ -96,12 +99,15 @@ public class MyController implements Initializable {
 			double offsetY = t.getSceneY() - orgSceneY;
 			double newTranslateX = orgTranslateX + offsetX;
 			double newTranslateY = orgTranslateY + offsetY;
-
+			
 			((Rectangle) (t.getSource())).setTranslateX(newTranslateX);
 			((Rectangle) (t.getSource())).setTranslateY(newTranslateY);
 		}
 
 	};
+	
+	//Only used for testing, delete later
+/////////////////////////////////////////////////////////////////////////////////////////////
 	@FXML
 	public void toggleWindow () 
 	{
@@ -110,8 +116,18 @@ public class MyController implements Initializable {
 			nodePropPane.setVisible(false);
 			creationPane.setVisible(true);
 		}
-		
+		else if ( nodePropPane.isVisible() == false && creationPane.isVisible() == true)
+		{
+			nodePropPane.setVisible(true);
+			creationPane.setVisible(false);
+		}
+		else
+		{
+			nodePropPane.setVisible(false);
+			creationPane.setVisible(true);
+		}
 	}
+/////////////////////////////////////////////////////////////////////////////////////////////
 	
 	@FXML
 	public void closeApp() 
