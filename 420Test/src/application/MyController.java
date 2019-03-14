@@ -71,13 +71,6 @@ public class MyController implements Initializable {
          
 	}
 	
-	/*public class Agent extends Rectangle {
-		public Agent() {
-			Text text = new Text("Title");
-			
-		}
-	}*/
-	
 	public void drag(MouseEvent event) {
 		Node n = (Node) event.getSource();
 		n.setTranslateX(n.getTranslateX() + event.getX());
