@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.*?>
@@ -21,19 +22,39 @@
                	<MenuItem mnemonicParsing="false" text="Save" />
                 <MenuItem mnemonicParsing="false" text="Open" />
                	<MenuItem mnemonicParsing="false" onAction="#closeApp" text="Close" />
-               </items></Menu>
+               </items>
+            </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#createRectangle" text="Create Node" />
               
-            </items>
+                                    </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="View">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#toggleWindow" text="(TEST) Toggle Properties " />
+              </items>
+            </Menu>
         </menus>
       </MenuBar>
       <SplitPane dividerPositions="0.7835990888382688" layoutX="-3.0" layoutY="20.0" prefHeight="325.0" prefWidth="259.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
         <items>
           <AnchorPane id="nodeSpace" fx:id="nodeSpace" minHeight="0.0" minWidth="0.0" prefHeight="219.0" prefWidth="73.0" />
-          <AnchorPane id="properties" fx:id="properties" />
+          <AnchorPane id="properties" fx:id="properties">
+               <children>
+                  <AnchorPane fx:id="creationPane" prefHeight="323.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Button fx:id="createNode" alignment="CENTER" layoutX="4.0" layoutY="14.0" mnemonicParsing="false" onAction="#createRectangle" prefHeight="32.0" prefWidth="84.0" text="Create Node" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="288.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="14.0">
+                           <font>
+                              <Font size="11.0" />
+                           </font></Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="nodePropPane" prefHeight="323.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Text disable="true" focusTraversable="true" opacity="0.51" strokeType="OUTSIDE" strokeWidth="0.0" text="Properties" textAlignment="CENTER" wrappingWidth="91.0" AnchorPane.bottomAnchor="305.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children></AnchorPane>
+               </children></AnchorPane>
         </items>
       </SplitPane>
    </children>
