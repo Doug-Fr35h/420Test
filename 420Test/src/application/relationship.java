@@ -20,7 +20,7 @@ public class relationship {
 	private String title = "";
 	private String multiplicity1 = ""; 
 	private String multiplicity2 = ""; 
-	private boolean isDashed = false;
+	private boolean isdashed = false;
 	private arrow arrow1 = new arrow();
 	private arrow arrow2 = new arrow();
 	
@@ -49,7 +49,7 @@ public class relationship {
 	}
 	
 	public boolean isDashed(){
-		return this.isDashed;
+		return this.isdashed;
 	}
 	
 	/*public EnumSet<arrowType> getArrow1(){
@@ -70,9 +70,12 @@ public class relationship {
 	
 	//-----setters----setters----setters----setters----
 	
-	public void setRelationship(classBox A, classBox B){ //setRelationship(clicked, released)
-		this.End1 = A;
-		this.End2 = B;
+	public void setRelationship(classBox head, classBox tail){ //setRelationship(clicked, released)
+		this.End1 = head;
+		this.End2 = tail;
+		End1.addConnection(this);
+		if (End1 != End2) //TO AVOID DOUBLING THE EFFECT IF CREATING A RELATIONSHIP WITH SELF
+			End2.addConnection(this);
 	}
 	
 	public void setRelationshipTitle(String s){
@@ -88,15 +91,15 @@ public class relationship {
 	}
 	
 	public void dash(){
-		this.isDashed = true;
+		this.isdashed = true;
 	}
 	
 	public void undash(){
-		this.isDashed = false;
+		this.isdashed = false;
 	}
 	
 	public void toggleDash(){
-		this.isDashed = !isDashed;
+		this.isdashed = !isdashed;
 	}
 	
 	/*public void setArrow1(EnumSet<arrowType> type){
@@ -108,7 +111,7 @@ public class relationship {
 			arrow1.type = t;
 			return t;
 		} else {
-			System.out.println("setArrow1(): Bad Arrow Type!");
+			System.out.println("setArrow1(): Bad Arrow Type: "+t+" not in range!");
 			return 0;
 		}
 	}
@@ -118,7 +121,7 @@ public class relationship {
 			arrow2.type = t;
 			return t;
 		} else {
-			System.out.println("setArrow2(): Bad Arrow Type!");
+			System.out.println("setArrow2(): Bad Arrow Type: "+t+" not in range!");
 			return 0;
 		}
 	}
