@@ -49,13 +49,21 @@ public class classBox {
 	}
 	
 	public void printConnections(){
+		System.out.print(this.title + "'s connections");
+		for(int i = 1; i<= (this.connections.length * 10) - (this.title.length() + 14); i++)
+			System.out.print("=");
+		System.out.print("\n");
 		for(int i = 0; i < this.connections.length; i++){
 			if(this.connections[i] == null){
-				System.out.println("null");
+				System.out.printf(" %-8s|", "null");
 			}else{
-				System.out.println(this.connections[i].getTitle());
+				System.out.printf(" %-8s|",this.connections[i].getTitle());
 			}
 		}
+		System.out.println();
+		for(int i = 0; i < this.connections.length; i++)
+			System.out.print("-" +i+"-------+");
+		System.out.println();
 	}
 	
 	public void setAttributes(String newAttr){
