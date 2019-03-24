@@ -2,7 +2,6 @@ package application;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.scene.layout.Region;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,12 +13,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.Cursor;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.RectangleBuilder;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.control.MenuItem;
 
 public class MyController implements Initializable {
@@ -32,11 +33,7 @@ public class MyController implements Initializable {
 
     @FXML
     private AnchorPane creationPane;
-	
-/*
-	@FXML
-	private Rectangle newRec;
-*/
+
 	@FXML
 	private AnchorPane nodeSpace;
 
@@ -55,19 +52,75 @@ public class MyController implements Initializable {
 		// TODO (don't really need to do anything here).
 
 	}
+	
+	public DraggableNode createNode(ActionEvent event) {
+		
+		FlowPane nodeID = new FlowPane();
+		FlowPane nodeVar = new FlowPane();
+		FlowPane nodeMet = new FlowPane();
+		DraggableNode nodeMain = new DraggableNode();
+		
+		
+		//Sizes
+        nodeMain.setPrefSize(80, 60);
+        
+        nodeID.setPrefSize(80, 20);
+        nodeVar.setPrefSize(80, 20);
+        nodeMet.setPrefSize(80, 20);
+        
+        // define the style via css
+        nodeMain.setStyle(
+            "-fx-background-color: black; "
+            + "-fx-text-fill: black; "
+            + "-fx-border-color: black;");
+        nodeID.setStyle(
+                "-fx-background-color: #FFFFFF; "
+                + "-fx-text-fill: black; "
+                + "-fx-border-color: black;");
+        nodeVar.setStyle(
+                "-fx-background-color: #FFFFFF; "
+                + "-fx-text-fill: black; "
+                + "-fx-border-color: black;");
+        nodeMet.setStyle(
+                "-fx-background-color: #FFFFFF; "
+                + "-fx-text-fill: black; "
+                + "-fx-border-color: black;");
+        // position the node
+        nodeMain.setLayoutX(30 + nodeMain.getPrefWidth());
+        nodeMain.setLayoutY(30);
+        
+        nodeID.setLayoutX(30);
+        nodeID.setLayoutY(30);
+        nodeVar.setLayoutX(30);
+        nodeVar.setLayoutY(30 + nodeID.getPrefHeight());
+        nodeMet.setLayoutX(30);
+        nodeMet.setLayoutY(30 + nodeVar.getPrefHeight());
+        
+        // add the node to the root pane 
+        
+        nodeMain.getChildren().addAll(nodeID,nodeVar,nodeMet);
+        nodeSpace.getChildren().add(nodeMain);
+        
+        return nodeMain;
+         
+	}
 
-	public Rectangle createRectangle(ActionEvent event) {
-		Rectangle newRec = new Rectangle(30, 40, 100, 150);
-
+	public void createRectangle(ActionEvent event) {
+		
+		Rectangle newRec = new Rectangle(30, 40, 100, 50);
+		
+	
 		newRec.setFill(Color.WHITE);
+		
 
 		newRec.setStroke(Color.BLACK);
+		
 
 		newRec.setCursor(Cursor.HAND);
 		newRec.setOnMousePressed(rectangleOnMousePressedEventHandler);
 		newRec.setOnMouseDragged(rectangleOnMouseDraggedEventHandler);
 		nodeSpace.getChildren().add(newRec);
-		return newRec;
+		
          
 	}
 	
