@@ -1,8 +1,8 @@
 package application;
 
+import java.awt.Button;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.scene.layout.Region;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,12 +14,14 @@ import javafx.scene.paint.Color;
 import javafx.scene.Cursor;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.RectangleBuilder;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.control.MenuItem;
 
 public class MyController implements Initializable {
@@ -28,106 +30,38 @@ public class MyController implements Initializable {
 	private AnchorPane root;
 	
 	@FXML
-    private AnchorPane nodePropPane;
+    private AnchorPane createSpace;
 
-    @FXML
-    private AnchorPane creationPane;
-	
-/*
 	@FXML
-	private Rectangle newRec;
-*/
+    private AnchorPane propSpace;
+
 	@FXML
 	private AnchorPane nodeSpace;
-
+	
 	@FXML
-	private AnchorPane properties;
-
-	@FXML
-	double orgSceneX, orgSceneY;
-
-	@FXML
-	double orgTranslateX, orgTranslateY;
+	private TextField titleText;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		//propSpace.getChildren().add(titleText);		
+		createNode();
 
-		// TODO (don't really need to do anything here).
-
-	}
-
-	public Rectangle createRectangle(ActionEvent event) {
-		Rectangle newRec = new Rectangle(30, 40, 100, 150);
-
-		newRec.setFill(Color.WHITE);
-
-		newRec.setStroke(Color.BLACK);
-
-		newRec.setCursor(Cursor.HAND);
-		newRec.setOnMousePressed(rectangleOnMousePressedEventHandler);
-		newRec.setOnMouseDragged(rectangleOnMouseDraggedEventHandler);
-		nodeSpace.getChildren().add(newRec);
-		return newRec;
-         
 	}
 	
-	public void drag(MouseEvent event) {
-		Node n = (Node) event.getSource();
-		n.setTranslateX(n.getTranslateX() + event.getX());
-		n.setTranslateY(n.getTranslateY() + event.getY());
+	public void createNode() {
+		//classBox box = new classBox();
+		//root.getChildren().addAll(box);
+		
+		Box t = new Box(nodeSpace, propSpace);
+		nodeSpace.getChildren().add(t);
+		/*
+		Text title = new Text();
+		title.setText("Title");
+		title.setX(20);
+        title.setY(20);
+        nodeSpace.getChildren().add(title);
+		*/
 	}
-
-	EventHandler<MouseEvent> rectangleOnMousePressedEventHandler = new EventHandler<MouseEvent>() {
-
-		@Override
-		public void handle(MouseEvent t) {
-			orgSceneX = t.getSceneX();
-			orgSceneY = t.getSceneY();
-			orgTranslateX = ((Rectangle) (t.getSource())).getTranslateX();
-			orgTranslateY = ((Rectangle) (t.getSource())).getTranslateY();
-			nodePropPane.setVisible(true);
-			creationPane.setVisible(false);
-			
-		}
-	};
-
-	EventHandler<MouseEvent> rectangleOnMouseDraggedEventHandler = new EventHandler<MouseEvent>() {
-
-		@Override
-		public void handle(MouseEvent t) {
-			double offsetX = t.getSceneX() - orgSceneX;
-			double offsetY = t.getSceneY() - orgSceneY;
-			double newTranslateX = orgTranslateX + offsetX;
-			double newTranslateY = orgTranslateY + offsetY;
-			
-			((Rectangle) (t.getSource())).setTranslateX(newTranslateX);
-			((Rectangle) (t.getSource())).setTranslateY(newTranslateY);
-		}
-
-	};
-	
-	//Only used for testing, delete later
-/////////////////////////////////////////////////////////////////////////////////////////////
-	@FXML
-	public void toggleWindow () 
-	{
-		if ( nodePropPane.isVisible() == true && creationPane.isVisible() == false)
-		{
-			nodePropPane.setVisible(false);
-			creationPane.setVisible(true);
-		}
-		else if ( nodePropPane.isVisible() == false && creationPane.isVisible() == true)
-		{
-			nodePropPane.setVisible(true);
-			creationPane.setVisible(false);
-		}
-		else
-		{
-			nodePropPane.setVisible(false);
-			creationPane.setVisible(true);
-		}
-	}
-/////////////////////////////////////////////////////////////////////////////////////////////
 	
 	@FXML
 	public void closeApp() 
