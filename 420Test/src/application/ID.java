@@ -31,4 +31,8 @@ public class ID {
 		return nodeList.get(index);
 	}
 	
+	public classBox getClassBox(){
+		return nodeList.get(UUIDlist.indexOf(this));
+	}
+	
 }

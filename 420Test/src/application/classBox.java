@@ -112,4 +112,8 @@ public class classBox {
 		return this.yLocation;
 	}
 	
+	public ID getID(){
+		return this.uniqueID;
+	}
+	
 }/**/
