@@ -1,4 +1,4 @@
-package application;
+/*package application;
 
 public class classBox {
 	
@@ -110,4 +110,4 @@ public class classBox {
 		return this.yLocation;
 	}
 	
-}
+}/**/
