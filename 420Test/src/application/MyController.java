@@ -15,6 +15,7 @@ import javafx.scene.Cursor;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -48,6 +49,33 @@ public class MyController implements Initializable {
 
 	}
 	
+    private Line currentLine ;
+	
+	public Line createLine(ActionEvent event) {
+		
+		System.out.print("inside create line");
+		
+        Pane pane = nodeSpace;
+
+        pane.setOnMousePressed(e -> {
+            currentLine = new Line(e.getX(), e.getY(), e.getX(), e.getY());
+            //System.out.print("got here");
+            pane.getChildren().add(currentLine);
+        });
+
+        pane.setOnMouseDragged(e -> {
+            currentLine.setEndX(e.getX());
+            currentLine.setEndY(e.getY());
+            
+        });
+        pane.setOnMouseReleased(e ->{
+        	
+        pane.setOnMousePressed(null);     
+        });
+        
+        return currentLine;
+	    }	
+
 	public void createNode() {
 		//classBox box = new classBox();
 		//root.getChildren().addAll(box);
