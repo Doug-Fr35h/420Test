@@ -1,5 +1,6 @@
 package application;
 
+import java.awt.Button;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
@@ -29,158 +30,38 @@ public class MyController implements Initializable {
 	private AnchorPane root;
 	
 	@FXML
-    private AnchorPane nodePropPane;
+    private AnchorPane createSpace;
 
-    @FXML
-    private AnchorPane creationPane;
+	@FXML
+    private AnchorPane propSpace;
 
 	@FXML
 	private AnchorPane nodeSpace;
-
+	
 	@FXML
-	private AnchorPane properties;
-
-	@FXML
-	double orgSceneX, orgSceneY;
-
-	@FXML
-	double orgTranslateX, orgTranslateY;
+	private TextField titleText;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
-		// TODO (don't really need to do anything here).
+		//propSpace.getChildren().add(titleText);		
+		createNode();
 
 	}
 	
-	public DraggableNode createNode(ActionEvent event) {
+	public void createNode() {
+		//classBox box = new classBox();
+		//root.getChildren().addAll(box);
 		
-		FlowPane nodeID = new FlowPane();
-		FlowPane nodeVar = new FlowPane();
-		FlowPane nodeMet = new FlowPane();
-		DraggableNode nodeMain = new DraggableNode();
-		
-		
-		//Sizes
-        nodeMain.setPrefSize(80, 60);
-        
-        nodeID.setPrefSize(80, 20);
-        nodeVar.setPrefSize(80, 20);
-        nodeMet.setPrefSize(80, 20);
-        
-        // define the style via css
-        nodeMain.setStyle(
-            "-fx-background-color: black; "
-            + "-fx-text-fill: black; "
-            + "-fx-border-color: black;");
-        nodeID.setStyle(
-                "-fx-background-color: #FFFFFF; "
-                + "-fx-text-fill: black; "
-                + "-fx-border-color: black;");
-        nodeVar.setStyle(
-                "-fx-background-color: #FFFFFF; "
-                + "-fx-text-fill: black; "
-                + "-fx-border-color: black;");
-        nodeMet.setStyle(
-                "-fx-background-color: #FFFFFF; "
-                + "-fx-text-fill: black; "
-                + "-fx-border-color: black;");
-        // position the node
-        nodeMain.setLayoutX(30 + nodeMain.getPrefWidth());
-        nodeMain.setLayoutY(30);
-        
-        nodeID.setLayoutX(30);
-        nodeID.setLayoutY(30);
-        nodeVar.setLayoutX(30);
-        nodeVar.setLayoutY(30 + nodeID.getPrefHeight());
-        nodeMet.setLayoutX(30);
-        nodeMet.setLayoutY(30 + nodeVar.getPrefHeight());
-        
-        // add the node to the root pane 
-        
-        nodeMain.getChildren().addAll(nodeID,nodeVar,nodeMet);
-        nodeSpace.getChildren().add(nodeMain);
-        
-        return nodeMain;
-         
+		Box t = new Box(nodeSpace, propSpace);
+		nodeSpace.getChildren().add(t);
+		/*
+		Text title = new Text();
+		title.setText("Title");
+		title.setX(20);
+        title.setY(20);
+        nodeSpace.getChildren().add(title);
+		*/
 	}
-
-	public void createRectangle(ActionEvent event) {
-		
-		Rectangle newRec = new Rectangle(30, 40, 100, 50);
-		
-	
-		newRec.setFill(Color.WHITE);
-		
-
-		newRec.setStroke(Color.BLACK);
-		
-
-		newRec.setCursor(Cursor.HAND);
-		newRec.setOnMousePressed(rectangleOnMousePressedEventHandler);
-		newRec.setOnMouseDragged(rectangleOnMouseDraggedEventHandler);
-		nodeSpace.getChildren().add(newRec);
-		
-         
-	}
-	
-	public void drag(MouseEvent event) {
-		Node n = (Node) event.getSource();
-		n.setTranslateX(n.getTranslateX() + event.getX());
-		n.setTranslateY(n.getTranslateY() + event.getY());
-	}
-
-	EventHandler<MouseEvent> rectangleOnMousePressedEventHandler = new EventHandler<MouseEvent>() {
-
-		@Override
-		public void handle(MouseEvent t) {
-			orgSceneX = t.getSceneX();
-			orgSceneY = t.getSceneY();
-			orgTranslateX = ((Rectangle) (t.getSource())).getTranslateX();
-			orgTranslateY = ((Rectangle) (t.getSource())).getTranslateY();
-			nodePropPane.setVisible(true);
-			creationPane.setVisible(false);
-			
-		}
-	};
-
-	EventHandler<MouseEvent> rectangleOnMouseDraggedEventHandler = new EventHandler<MouseEvent>() {
-
-		@Override
-		public void handle(MouseEvent t) {
-			double offsetX = t.getSceneX() - orgSceneX;
-			double offsetY = t.getSceneY() - orgSceneY;
-			double newTranslateX = orgTranslateX + offsetX;
-			double newTranslateY = orgTranslateY + offsetY;
-			
-			((Rectangle) (t.getSource())).setTranslateX(newTranslateX);
-			((Rectangle) (t.getSource())).setTranslateY(newTranslateY);
-		}
-
-	};
-	
-	//Only used for testing, delete later
-/////////////////////////////////////////////////////////////////////////////////////////////
-	@FXML
-	public void toggleWindow () 
-	{
-		if ( nodePropPane.isVisible() == true && creationPane.isVisible() == false)
-		{
-			nodePropPane.setVisible(false);
-			creationPane.setVisible(true);
-		}
-		else if ( nodePropPane.isVisible() == false && creationPane.isVisible() == true)
-		{
-			nodePropPane.setVisible(true);
-			creationPane.setVisible(false);
-		}
-		else
-		{
-			nodePropPane.setVisible(false);
-			creationPane.setVisible(true);
-		}
-	}
-/////////////////////////////////////////////////////////////////////////////////////////////
 	
 	@FXML
 	public void closeApp() 
