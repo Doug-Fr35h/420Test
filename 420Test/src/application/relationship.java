@@ -15,8 +15,8 @@ public class relationship {
 		int type;
 	}
 	
-	private node End1; //this will eventually become Node, not classBox
-	private node End2;
+	private Object End1; //this will eventually become Node, not classBox
+	private Object End2;
 	private String title = "";
 	private String multiplicity1 = ""; 
 	private String multiplicity2 = ""; 
@@ -28,11 +28,11 @@ public class relationship {
 	
 	//-----getters----getters----getters----
 	
-	public node getEnd1(){
+	public Object getEnd1(){
 		return this.End1;
 	}
 	
-	public node getEnd2(){
+	public Object getEnd2(){
 		return this.End2;
 	}
 	
@@ -70,12 +70,12 @@ public class relationship {
 	
 	//-----setters----setters----setters----setters----
 	
-	public void setRelationship(node head, node tail){ //setRelationship(clicked, released)
+	public void setRelationship(Object head, Object tail){ //setRelationship(clicked, released)
 		this.End1 = head;
 		this.End2 = tail;
-		End1.addConnection(this);
+		((node) End1).addConnection(this);
 		if (End1 != End2) //TO AVOID DOUBLING THE EFFECT IF CREATING A RELATIONSHIP WITH SELF
-			End2.addConnection(this);
+			((node)End2).addConnection(this);
 	}
 	
 	public void setRelationshipTitle(String s){
