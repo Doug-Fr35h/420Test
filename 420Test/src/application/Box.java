@@ -2,6 +2,8 @@ package application;
 
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
@@ -9,7 +11,9 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
 class Box extends DraggableNode{
-	private Text title = new Text();
+	private TextField title = new TextField();
+	private TextArea var = new TextArea();
+	private TextArea meth = new TextArea();
 	//private Text attributes;
 	//private Text operations;
 	//private Text extraComponents;
@@ -23,11 +27,11 @@ class Box extends DraggableNode{
 	public Box(AnchorPane nodeSpace, AnchorPane propSpace)
 	{		
 		//Sizes
-        nodeMain.setPrefSize(80, 60);
+        nodeMain.setPrefSize(100, 130);
         
-        nodeID.setPrefSize(80, 20);
-        nodeVar.setPrefSize(80, 20);
-        nodeMet.setPrefSize(80, 20);
+        nodeID.setPrefSize(200, 50);
+        nodeVar.setPrefSize(200, 100);
+        nodeMet.setPrefSize(200, 100);
         
         // Define the style via CSS
         nodeMain.setStyle(
@@ -63,21 +67,31 @@ class Box extends DraggableNode{
         nodeMet.setLayoutY(30 + nodeVar.getPrefHeight());
         
         
-        // Add Text to  
+        // Add Text to title 
         
-		title.setText("Title");
-		title.setX(30);
-        title.setY(30);
+		title.setPromptText("Title");
+		title.setPrefWidth(100);
         nodeID.getChildren().add(title);
+        
+        //Add Text to var
+        
+        var.setPromptText("Variables");
+		var.setPrefWidth(nodeVar.getPrefWidth());
+		var.setPrefHeight(nodeVar.getPrefHeight());
+        nodeVar.getChildren().add(var);
+        
+        //Add Text to meth
+        
+        meth.setPromptText("Methods");
+		meth.setPrefWidth(nodeMet.getPrefWidth());
+		meth.setPrefHeight(nodeMet.getPrefHeight());
+        nodeMet.getChildren().add(meth);
         
         nodeMain.getChildren().addAll(nodeID,nodeVar,nodeMet);
         nodeSpace.getChildren().add(nodeMain);
 	}
 	
-	public void editTitle (Text newTitle)
-	{
-		title.setText("Title");
-	}
+	
 	
 	/*
 	EventHandler<MouseEvent> boxOnMousePressedEventHandler = new EventHandler<MouseEvent>() {
