@@ -166,6 +166,11 @@ public class node {
 		}
 		
 	}
+
+	public void node(classBox e){
+		
+	}
+	
 	public void setTitle(String newTitle){
 		this.title = newTitle;
 	}
