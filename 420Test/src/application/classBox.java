@@ -9,6 +9,7 @@ public class classBox {
 	private double xLocation;
 	private double yLocation;
 	private relationship[] connections;
+	final private ID uniqueID;
 	
 
 	//CONSTRUCTOR
@@ -20,6 +21,7 @@ public class classBox {
 		this.xLocation = 20.; // PREFER TO SET THIS TO MOUSE LOCATION
 		this.yLocation = 20.; // ANYBODY KNOW ANYTHING ABOUT THAT?
 		this.connections = new relationship[1];
+		this.uniqueID = new ID();
 	}
 	
 	//---setters ---
