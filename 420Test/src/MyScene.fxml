@@ -23,11 +23,7 @@
             <MenuItem mnemonicParsing="false" onAction="#closeApp" text="Close" />
           </items>
         </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
-          <items>
-            <MenuItem mnemonicParsing="false" onAction="#createNode" text="Create Node" />
-          </items>
-        </Menu>
+        <Menu mnemonicParsing="false" text="Edit" />
         <Menu mnemonicParsing="false" text="View" />
       </menus>
     </MenuBar>
