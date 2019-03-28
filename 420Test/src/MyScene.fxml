@@ -27,7 +27,7 @@
         <Menu mnemonicParsing="false" text="View" />
       </menus>
     </MenuBar>
-    <SplitPane dividerPositions="0.8223748773307163" prefHeight="325.0" prefWidth="259.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+    <SplitPane dividerPositions="0.8223748773307163" mouseTransparent="true" prefHeight="325.0" prefWidth="259.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
       <items>
         <AnchorPane fx:id="nodeSpace" minHeight="0.0" minWidth="0.0" prefHeight="626.0" prefWidth="625.0" />
         <AnchorPane id="properties" fx:id="createSpace">
