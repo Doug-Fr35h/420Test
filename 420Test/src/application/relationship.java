@@ -73,9 +73,9 @@ public class relationship {
 	public void setRelationship(Object head, Object tail){ //setRelationship(clicked, released)
 		this.End1 = head;
 		this.End2 = tail;
-		((node) End1).addConnection(this);
+		((classBox) End1).addConnection(this);
 		if (End1 != End2) //TO AVOID DOUBLING THE EFFECT IF CREATING A RELATIONSHIP WITH SELF
-			((node)End2).addConnection(this);
+			((classBox) End2).addConnection(this);
 	}
 	
 	public void setRelationshipTitle(String s){

@@ -5,8 +5,11 @@ public class node {
 	private double xLocation;
 	private double yLocation;
 	private relationship[] connections;
+	classBox cB;
+	stickFigure sF;
+	simpleBox sB;
 	
-	public class classBox extends node {
+/*	public class classBox extends node {
 		private String attributes;
 		private String operations;
 		private String extraComponents;
@@ -46,7 +49,7 @@ public class node {
 		public String getExtraComponents(){
 			return this.extraComponents;
 		}
-	}
+	}/**/
 	
 	public class stickFigure extends node {
 		private int[] color; 
