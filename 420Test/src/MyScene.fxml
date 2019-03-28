@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="root" prefHeight="657.0" prefWidth="1021.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.MyController">
+<AnchorPane fx:id="root" prefHeight="657.0" prefWidth="1021.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MyController">
   <children>
     <MenuBar AnchorPane.bottomAnchor="323.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <menus>
@@ -28,11 +28,7 @@
             <MenuItem mnemonicParsing="false" onAction="#createNode" text="Create Node" />
           </items>
         </Menu>
-        <Menu mnemonicParsing="false" text="View">
-          <items>
-            <MenuItem mnemonicParsing="false" text="(TEST) Toggle Properties " />
-          </items>
-        </Menu>
+        <Menu mnemonicParsing="false" text="View" />
       </menus>
     </MenuBar>
     <SplitPane dividerPositions="0.22080471050049066, 0.8204121687929342" prefHeight="325.0" prefWidth="259.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
