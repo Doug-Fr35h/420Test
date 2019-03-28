@@ -91,8 +91,8 @@ public class textClassBox {
 		System.out.printf("|%-sps|\n", r.getTitle());/**/
 		System.out.printf("|%-20s|\n", r.getTitle());
 		System.out.printf("+--------------------+\n");
-		System.out.printf("| head:%14s|\n", ((node) r.getEnd1()).getTitle());
-		System.out.printf("| tail:%14s|\n", ((node) r.getEnd2()).getTitle());
+		System.out.printf("| head:%14s|\n", r.getEnd1().getTitle());
+		System.out.printf("| tail:%14s|\n", r.getEnd2().getTitle());
 		System.out.printf("| h-type:%12d|\n", r.getArrow1());
 		System.out.printf("| t-type:%12d|\n", r.getArrow2());
 		System.out.printf("| h-multi.:%10s|\n", r.getMultiplicity1());

@@ -32,8 +32,8 @@ public class relationship {
 		return this.End1.getClassBox();
 	}
 	
-	public Object getEnd2(){
-		return this.End2;
+	public classBox getEnd2(){
+		return this.End2.getClassBox();
 	}
 	
 	public String getTitle(){
