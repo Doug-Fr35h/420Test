@@ -11,12 +11,12 @@ import java.util.*;
 public class relationship {
 
 	static class arrow {
-//		EnumSet<arrowType> type;
+//		arrowType type;
 		int type;
 	}
 	
-	private ID End1; 
-	private ID End2;
+	private classBox End1; 
+	private classBox End2;
 	private String title = "";
 	private String multiplicity1 = ""; 
 	private String multiplicity2 = ""; 
@@ -29,11 +29,11 @@ public class relationship {
 	//-----getters----getters----getters----
 	
 	public classBox getEnd1(){
-		return this.End1.getClassBox();
+		return this.End1;
 	}
 	
 	public classBox getEnd2(){
-		return this.End2.getClassBox();
+		return this.End2;
 	}
 	
 	public String getTitle(){
@@ -71,11 +71,11 @@ public class relationship {
 	//-----setters----setters----setters----setters----
 	
 	public void setRelationship(classBox head, classBox tail){ //setRelationship(clicked, released)
-		this.End1 = head.getID();
-		this.End2 = tail.getID();
-		End1.getClassBox().addConnection(this);
+		this.End1 = head;
+		this.End2 = tail;
+		End1.addConnection(this);
 		if (End1 != End2) //TO AVOID DOUBLING THE EFFECT IF CREATING A RELATIONSHIP WITH SELF
-			End2.getClassBox().addConnection(this);
+			End2.addConnection(this);
 	}
 	
 	public void setRelationshipTitle(String s){

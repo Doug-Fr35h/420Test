@@ -1,13 +1,17 @@
+/*
+ * THIS DOESN'T WORK YET
+ */
+
 package application;
 
-public class node {
+public class nodeFactory {
 	private String title;
 	private double xLocation;
 	private double yLocation;
 	private relationship[] connections;
-	classBox cB;
-	stickFigure sF;
-	simpleBox sB;
+//	classBox cB;
+//	stickFigure sF;
+//	simpleBox sB;
 	
 /*	public class classBox extends node {
 		private String attributes;
@@ -51,7 +55,7 @@ public class node {
 		}
 	}/**/
 	
-	public class stickFigure extends node {
+	public class stickFigure extends nodeFactory {
 		private int[] color; 
 		public stickFigure (){
 			super.title = "~Character~";
@@ -150,7 +154,7 @@ public class node {
 		}
 	}
 
-	public class simpleBox extends node {
+	public class simpleBox extends nodeFactory {
 		private String note;
 		public simpleBox(){
 			super.title = "~simpleBox~";

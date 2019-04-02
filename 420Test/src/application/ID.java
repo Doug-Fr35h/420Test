@@ -7,6 +7,7 @@ public class ID {
 	UUID uniqueID;
 	ArrayList<UUID> UUIDlist = new ArrayList<UUID>();
 	ArrayList<classBox> nodeList = new ArrayList<classBox>();
+//	UUID[] UUIDlist = new UUID[];
 
 	public UUID ID(classBox cB) {
 		uniqueID = UUID.randomUUID();

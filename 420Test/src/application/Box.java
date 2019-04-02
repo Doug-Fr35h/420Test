@@ -80,7 +80,7 @@ class Box extends DraggableNode{
 		var.setPrefHeight(nodeVar.getPrefHeight());
         nodeVar.getChildren().add(var);
         
-        //Add Text to meth
+        //Add Text to meth(ods)
         
         meth.setPromptText("Methods");
 		meth.setPrefWidth(nodeMet.getPrefWidth());
