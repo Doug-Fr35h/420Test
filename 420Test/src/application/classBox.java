@@ -118,6 +118,16 @@ public class classBox {
 		return count;
 	}
 	
+	public classBox getOtherEnd(relationship R){
+		if (R.getEnd1() == this){
+			return R.getEnd2();
+		} else if (R.getEnd2() == this){
+			return R.getEnd1();
+		} else {
+			return null;
+		}
+	}
+	
 	public int getRelationshipLength(){
 		return this.connections.length;
 	}
