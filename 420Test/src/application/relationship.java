@@ -20,6 +20,17 @@ public class relationship {
 	private boolean isdashed = false;
 	private arrow arrow1 = new arrow();
 	private arrow arrow2 = new arrow();
+	
+	// delete function:
+	public void delete(){
+		this.End1 = null;
+		this.End2 = null;
+		this.title = null;
+		this.multiplicity1 = null;
+		this.multiplicity2 = null;
+		this.arrow1 = null;
+		this.arrow2 = null;
+	}
 
 	//-----GETTERS-----GETTERS-----GETTERS-----GETTERS-----GETTERS-----GETTERS
 	

@@ -10,7 +10,7 @@ public class classBox {
 	private double xLocation;
 	private double yLocation;
 	private relationship[] connections;
-	final private ID uniqueID;
+	private ID uniqueID;
 	private double width; //100 default
 	private double height; //130 default
 	// private mapping of UUID's
@@ -27,6 +27,23 @@ public class classBox {
 		this.uniqueID = new ID();
 		this.width = 100;
 		this.height = 130;
+	}
+	
+	//Delete Function
+	public void delete(){
+		for (int i = 0; i < this.connections.length; i++){ //delete all relationships first
+			connections[i].delete();
+			connections[i] = null;
+		}
+		//delete the mapping of the UUID for this node
+		
+		this.uniqueID = null;
+		this.title = null;
+		this.attributes = null;
+		this.operations = null;
+		this.extraComponents = null;
+		this.connections = null;
+		
 	}
 	
 	//---SETTER---SETTER---SETTER---SETTER---SETTER---SETTER---SETTER---SETTER---
