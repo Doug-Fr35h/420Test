@@ -10,13 +10,10 @@ import java.util.*;
 
 public class relationship {
 
-	static class arrow {
-//		arrowType type;
-		int type;
-	}
-	
-	private classBox End1; 
-	private classBox End2;
+	//relationship variables
+	static class arrow {int type;} //if this implementation sticks, just use ints, but for now.
+	private classBox End1; 		//		because we don't know if we'll actully use the arrow
+	private classBox End2;		//		class in a better way, we'll just keep it as is.
 	private String title = "";
 	private String multiplicity1 = ""; 
 	private String multiplicity2 = ""; 
@@ -24,7 +21,7 @@ public class relationship {
 	private arrow arrow1 = new arrow();
 	private arrow arrow2 = new arrow();
 
-	//-----getters----getters----getters----
+	//-----GETTERS-----GETTERS-----GETTERS-----GETTERS-----GETTERS-----GETTERS
 	
 	public classBox getEnd1(){
 		return this.End1;
@@ -66,12 +63,12 @@ public class relationship {
 		return this.arrow2.type;
 	}
 	
-	//-----setters----setters----setters----setters----
+	//-----SETTERS-----SETTERS-----SETTERS-----SETTERS-----SETTERS-----SETTERS
 	
 	public void setRelationship(classBox head, classBox tail){ //setRelationship(clicked, released)
 		this.End1 = head;
 		this.End2 = tail;
-		End1.addConnection(this);
+		End1.addConnection(this); 
 		if (End1 != End2) //TO AVOID DOUBLING THE EFFECT IF CREATING A RELATIONSHIP WITH SELF
 			End2.addConnection(this);
 	}
@@ -104,23 +101,19 @@ public class relationship {
 		arrow1.type.
 	}/**/
 	
-	public int setArrow1(int t){
+	public void setArrow1(int t){
 		if( t >= 1 && t <=6 ){
 			arrow1.type = t;
-			return t;
 		} else {
-			System.out.println("setArrow1(): Bad Arrow Type: "+t+" not in range!");
-			return 0;
+			System.out.println("setArrow1(): Bad Arrow Type: "+t+" not in range!"); 
 		}
 	}
 	
-	public int setArrow2(int t){
+	public void setArrow2(int t){
 		if( t >= 1 && t <=6 ){
 			arrow2.type = t;
-			return t;
 		} else {
 			System.out.println("setArrow2(): Bad Arrow Type: "+t+" not in range!");
-			return 0;
 		}
 	}
 }

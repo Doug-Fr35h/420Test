@@ -1,5 +1,10 @@
 /*
  * THIS DOESN'T WORK YET
+ * 
+ * FOR FUTURE ITERS
+ * 	The idea would be to have nodeFactory follow the factory
+ * 	model... unlike what its doing here. That being said:
+ * 	everything below can pretty much be ignored for now.
  */
 
 package application;
