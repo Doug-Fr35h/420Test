@@ -164,5 +164,26 @@ public class Tests {
 		System.out.printf("| State:%13s|\n", b);
 		System.out.printf("+--------------------+\n");
 	}
+	
+	@Test
+	public void testConnectionTitle() {
+		classBox Box1 = new classBox();
+		classBox Box2 = new classBox();
+		Box2.setTitle("Box Two");
+		relationship R1 = new relationship();
+		R1.setRelationship(Box1, Box2);
+		assertTrue("testConnectionTitle() Failed", Box1.getOtherEnd(R1).getTitle().equals("Box Two"));
+	}
+	
+	@Test
+	public void testEndCoords() {
+		classBox Box1 = new classBox();
+		classBox Box2 = new classBox();
+		Box2.setLocation(69.0, 420.0);
+		relationship R1 = new relationship();
+		R1.setRelationship(Box1, Box2);
+		assertTrue("testCoordsX() Failed", Box1.getOtherEnd(R1).getXLocation() == 69.0);
+		assertTrue("testCoordsY() Failed", Box1.getOtherEnd(R1).getYLocation() == 420.0);
+	}
 
 }
