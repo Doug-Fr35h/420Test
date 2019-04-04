@@ -23,9 +23,7 @@ public class relationship {
 	private boolean isdashed = false;
 	private arrow arrow1 = new arrow();
 	private arrow arrow2 = new arrow();
-	
 
-	
 	//-----getters----getters----getters----
 	
 	public classBox getEnd1(){
