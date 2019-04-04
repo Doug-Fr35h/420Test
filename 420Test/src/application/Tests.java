@@ -88,7 +88,8 @@ public class Tests {
 		assertEquals("Default Extra Components should be	: (nothing)", Box1.getExtraComponents(), "");
 		assertEquals("Default xLocation should be			: 20", Box1.getXLocation(), 20, 3);
 		assertEquals("Default yLocation should be			: 20", Box1.getYLocation(), 20, 3);
-		assertEquals("Default connections.size				: 1", Box1.getRelationshipCount(), 1);
+		assertEquals("Default connections.size				: 1", Box1.getRelationshipLength(), 1);
+		assertEquals("Default connections.count				: 0", Box1.getRelationshipCount(), 0);				
 		assertEquals("Default connections[0] should be		: null ",Box1.getRelIndexOf(0), null);
 		assertEquals("Default width should be				: 100", Box1.getWidth(), 100, 3);
 		assertEquals("Default height should be				: 130", Box1.getHeight(), 130, 3);
