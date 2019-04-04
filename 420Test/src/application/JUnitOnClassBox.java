@@ -22,13 +22,21 @@ public class JUnitOnClassBox {
 		assertEquals("Default height should be              : 130", Box1.getHeight(), 130, 3);
 	}
 
-    // fields used together with @Parameter must be public
-/*    @Parameter(0)
-    public int m1;
-//    @Parameter(1)
-    public int m2;
-//    @Parameter(2)
-    public int result;/**/
+	@Test
+	public void setOperators() {
+		classBox Box1 = new classBox();
+		Box1.setTitle("Title2");
+		Box1.setAttributes("Attrib1");
+		Box1.setOperations("Oper1");
+		Box1.setExtraComponents("EC1");
+		Box1.updateLocation(3, 24);
+		assertEquals("New Title Should be            : Title", Box1.getTitle(), "Title2");
+		assertEquals("New Attributes should be       : -", Box1.getAttributes(), "Attrib1");
+		assertEquals("New Opperations should be      : -", Box1.getOperations(), "Oper1");
+		assertEquals("New Extra Components should be : ", Box1.getExtraComponents(), "EC1");
+		assertEquals("New xLocation should be        : ", Box1.getXLocation(), 3, 3);
+		assertEquals("New yLocation should be        : ", Box1.getYLocation(), 24, 3);
+	}
 	
 	//public classBox box1;
 	public classBox box2;
