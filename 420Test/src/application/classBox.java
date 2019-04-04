@@ -86,7 +86,7 @@ public class classBox {
 	
 	
 	//set/update location
-	public void updateLocation(double x, double y){
+	public void setLocation(double x, double y){
 		this.xLocation = x;
 		this.yLocation = y;
 	}

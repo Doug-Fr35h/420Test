@@ -137,5 +137,31 @@ public class Tests {
 		assertEquals("New xLocation should be        : 3", Box1.getXLocation(), 3, 3);
 		assertEquals("New yLocation should be        : 24", Box1.getYLocation(), 24, 3);
 	}
+	
+	/*
+	 * 
+	 */
+	public static void Inspect(relationship r){
+		System.out.printf("+--------------------+\n");
+		/*int sp = 2;
+		if (r.getTitle().length()!=0)
+			sp= (20-r.getTitle().length())/2;
+		System.out.println(sp);
+		System.out.printf("|%-sps|\n", r.getTitle());/**/
+		System.out.printf("|%-20s|\n", r.getTitle());
+		System.out.printf("+--------------------+\n");
+		System.out.printf("| head:%14s|\n", r.getEnd1().getTitle());
+		System.out.printf("| tail:%14s|\n", r.getEnd2().getTitle());
+		System.out.printf("| h-type:%12d|\n", r.getArrow1());
+		System.out.printf("| t-type:%12d|\n", r.getArrow2());
+		System.out.printf("| h-multi.:%10s|\n", r.getMultiplicity1());
+		System.out.printf("| t-multi.:%10s|\n", r.getMultiplicity2());
+		String b = "Solid";
+		if (r.isDashed()){
+			b = "Dashed";
+		}
+		System.out.printf("| State:%13s|\n", b);
+		System.out.printf("+--------------------+\n");
+	}
 
 }
