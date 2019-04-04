@@ -87,7 +87,7 @@ public class Tests {
 	public void setTitle() {
 		classBox Box1 = new classBox();
 		Box1.setTitle("Title2");
-		assertEquals("New Title Should be            : Title", Box1.getTitle(), "Title2");
+		assertEquals("New Title Should be            		: Title", Box1.getTitle(), "Title2");
 	}
 	
 	@Test
@@ -101,29 +101,29 @@ public class Tests {
 	public void setAttrib() {
 		classBox Box1 = new classBox();
 		Box1.setAttributes("Attrib1");
-		assertEquals("New Attributes should be       : -", Box1.getAttributes(), "Attrib1");
+		assertEquals("New Attributes should be       		: -", Box1.getAttributes(), "Attrib1");
 	}
 	
 	@Test
 	public void setOper() {
 		classBox Box1 = new classBox();
 		Box1.setOperations("Oper1");
-		assertEquals("New Operations should be      : -", Box1.getOperations(), "Oper1");
+		assertEquals("New Operations should be      		: -", Box1.getOperations(), "Oper1");
 	}
 	
 	@Test
 	public void setEC() {
 		classBox Box1 = new classBox();
 		Box1.setExtraComponents("EC1");
-		assertEquals("New Extra Components should be : ", Box1.getExtraComponents(), "EC1");
+		assertEquals("New Extra Components should be 		: ", Box1.getExtraComponents(), "EC1");
 	}
 	
 	@Test
 	public void setCoords() {
 		classBox Box1 = new classBox();
 		Box1.updateLocation(3, 24);
-		assertEquals("New xLocation should be        : ", Box1.getXLocation(), 3, 3);
-		assertEquals("New yLocation should be        : ", Box1.getYLocation(), 24, 3);
+		assertEquals("New xLocation should be        		: ", Box1.getXLocation(), 3, 3);
+		assertEquals("New yLocation should be        		: ", Box1.getYLocation(), 24, 3);
 	}
 
 }
