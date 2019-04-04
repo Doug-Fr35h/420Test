@@ -109,6 +109,16 @@ public class classBox {
 	}
 	
 	public int getRelationshipCount(){
+		int count =  this.connections.length;
+		for (int i=0; i < count; i++){
+			if (this.connections[i] == null){
+				count --;
+			}
+		}
+		return count;
+	}
+	
+	public int getRelationshipLength(){
 		return this.connections.length;
 	}
 	
