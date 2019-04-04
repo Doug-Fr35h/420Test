@@ -1,6 +1,6 @@
 package application;
 
-public class textClassBox {
+public class testClassBox {
 
 	public static void main(String[] args) {
 
