@@ -100,7 +100,7 @@ public class Tests {
 
 	@Test
 	public void testSetTitleCB() {
-		classBox Box1 = new classBox();
+		//classBox Box1 = new classBox();
 		Box1.setTitle("Title2");
 		assertEquals("New Title Should be            : Title", Box1.getTitle(), "Title2");
 	}
@@ -109,36 +109,36 @@ public class Tests {
 	public void testTitle2CB() {
 		//String newTitle = "Testy Title";
 		//Box1.setTitle(newTitle);
-		assertEquals("New Title Should Be					:", Box1.getTitle(), "Title");
+		assertEquals("New Title Should Be					: Title", Box1.getTitle(), "Title");
 	}
 	
 	@Test
 	public void testSetAttribCB() {
-		classBox Box1 = new classBox();
+		//classBox Box1 = new classBox();
 		Box1.setAttributes("Attrib1");
-		assertEquals("New Attributes should be       : -", Box1.getAttributes(), "Attrib1");
+		assertEquals("New Attributes should be       : Attrib1", Box1.getAttributes(), "Attrib1");
 	}
 	
 	@Test
 	public void testSetOperCB() {
-		classBox Box1 = new classBox();
+		//classBox Box1 = new classBox();
 		Box1.setOperations("Oper1");
-		assertEquals("New Operations should be      : -", Box1.getOperations(), "Oper1");
+		assertEquals("New Operations should be      : Oper1", Box1.getOperations(), "Oper1");
 	}
 	
 	@Test
 	public void testSetECCB() {
-		classBox Box1 = new classBox();
+		//classBox Box1 = new classBox();
 		Box1.setExtraComponents("EC1");
-		assertEquals("New Extra Components should be : ", Box1.getExtraComponents(), "EC1");
+		assertEquals("New Extra Components should be : EC1", Box1.getExtraComponents(), "EC1");
 	}
 	
 	@Test
 	public void testSetCoordsCB() {
-		classBox Box1 = new classBox();
+		//classBox Box1 = new classBox();
 		Box1.updateLocation(3, 24);
-		assertEquals("New xLocation should be        : ", Box1.getXLocation(), 3, 3);
-		assertEquals("New yLocation should be        : ", Box1.getYLocation(), 24, 3);
+		assertEquals("New xLocation should be        : 3", Box1.getXLocation(), 3, 3);
+		assertEquals("New yLocation should be        : 24", Box1.getYLocation(), 24, 3);
 	}
 
 }
