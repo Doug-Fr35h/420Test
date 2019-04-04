@@ -28,34 +28,4 @@ public class JUnitOnClassBox {
 		assertEquals("Default height should be              : 130", Box1.getHeight(), 130, 3);
 	}
 	
-	//@Test
-	//public void 
-
-    // fields used together with @Parameter must be public
-/*    @Parameter(0)
-    public int m1;
-//    @Parameter(1)
-    public int m2;
-//    @Parameter(2)
-    public int result;/**/
-	
-
-
-    // creates the test data
-   /* @Parameters
-    public static Collection<Object[]> data() {
-        Object[][] data = new Object[][] { { 1 , 2, 2 }, { 5, 3, 15 }, { 121, 4, 484 } };
-        return Arrays.asList(data);
-    }/**/
-
-
- /*  @Test
-    public void testMultiplyException() {
-        MyClass tester = new MyClass();
-        assertEquals("Result", result, tester.multiply(m1, m2));
-    }/**/
-
-
-    // class to be tested
-
 }
