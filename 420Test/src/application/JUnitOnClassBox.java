@@ -35,12 +35,6 @@ public class JUnitOnClassBox {
 		assertEquals("New Title Should be            : Title", Box1.getTitle(), "Title2");
 	}
 	
-	@Test
-	public void testTitle() {
-		String newTitle = "Testy Title";
-		Box1.setTitle(newTitle);
-		assertEquals("New Title Should Be					:" + newTitle, Box1.getTitle(), newTitle);
-	}
 	
 	@Test
 	public void testTitle2() {
