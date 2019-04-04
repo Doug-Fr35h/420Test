@@ -39,7 +39,7 @@ public class Tests {
 		assertFalse(rel.getEnd2() == end1);
 	}
 		//Testing setRelationshipTitle
-	public void testRelSetRelTitle() {
+	public void testRelSetTitle() {
 		rel.setRelationshipTitle("testTitle");
 		assertEquals(rel.getTitle(), "testTitle");
 		assertFalse(rel.getTitle().equals("Title"));
