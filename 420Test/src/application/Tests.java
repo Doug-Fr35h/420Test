@@ -69,7 +69,7 @@ public class Tests {
 	}
 	
 	@Test
-	public void defaultValues() {
+	public void testDefaultValuesCB() {
 		//classBox Box1 = new classBox();
 		assertEquals("Default Title Should be				: Title", Box1.getTitle(), "Title");
 		assertEquals("Default Attributes should be			: -", Box1.getAttributes(), "-");
@@ -84,42 +84,42 @@ public class Tests {
 	}
 
 	@Test
-	public void setTitle() {
+	public void testSetTitleCB() {
 		classBox Box1 = new classBox();
 		Box1.setTitle("Title2");
 		assertEquals("New Title Should be            : Title", Box1.getTitle(), "Title2");
 	}
 	
 	@Test
-	public void testTitle2() {
+	public void testTitle2CB() {
 		//String newTitle = "Testy Title";
 		//Box1.setTitle(newTitle);
 		assertEquals("New Title Should Be					:", Box1.getTitle(), "Title");
 	}
 	
 	@Test
-	public void setAttrib() {
+	public void testSetAttribCB() {
 		classBox Box1 = new classBox();
 		Box1.setAttributes("Attrib1");
 		assertEquals("New Attributes should be       : -", Box1.getAttributes(), "Attrib1");
 	}
 	
 	@Test
-	public void setOper() {
+	public void testSetOperCB() {
 		classBox Box1 = new classBox();
 		Box1.setOperations("Oper1");
 		assertEquals("New Operations should be      : -", Box1.getOperations(), "Oper1");
 	}
 	
 	@Test
-	public void setEC() {
+	public void testSetECCB() {
 		classBox Box1 = new classBox();
 		Box1.setExtraComponents("EC1");
 		assertEquals("New Extra Components should be : ", Box1.getExtraComponents(), "EC1");
 	}
 	
 	@Test
-	public void setCoords() {
+	public void testSetCoordsCB() {
 		classBox Box1 = new classBox();
 		Box1.updateLocation(3, 24);
 		assertEquals("New xLocation should be        : ", Box1.getXLocation(), 3, 3);
