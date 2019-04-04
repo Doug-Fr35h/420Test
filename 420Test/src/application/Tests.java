@@ -12,11 +12,13 @@ public class Tests {
 	relationship R1 = new relationship();
 	relationship R2 = new relationship();
 	
+	relationship rel = new relationship();
+	classBox end1 = new classBox();
+	classBox end2 = new classBox();
+	
 	@org.junit.Test
-	public void test() {
-		relationship rel = new relationship();
-		classBox end1 = new classBox();
-		classBox end2 = new classBox();
+	public void testRelConstructor() {
+		
 		
 		//Testing Constructor
 		assertEquals(rel.getEnd1(), null);
@@ -27,39 +29,51 @@ public class Tests {
 		assertEquals(rel.isDashed(), false);
 		assertEquals(rel.getArrow1(), 0);
 		assertEquals(rel.getArrow2(), 0);
-		
+	}
 		//Testing setRelationship
+	public void testRelSetRelationship() {
 		rel.setRelationship(end1, end2);
 		assertEquals(rel.getEnd1(), end1);
 		assertFalse(rel.getEnd1() == end2);
 		assertEquals(rel.getEnd2(), end2);
 		assertFalse(rel.getEnd2() == end1);
-		
+	}
 		//Testing setRelationshipTitle
+	public void testRelSetRelTitle() {
 		rel.setRelationshipTitle("testTitle");
 		assertEquals(rel.getTitle(), "testTitle");
 		assertFalse(rel.getTitle().equals("Title"));
-		
+	}
 		//Testing setMultiplicity
+	public void testRelSetMultiplicity() {
 		rel.setMultiplicity1("0..0");
 		assertEquals(rel.getMultiplicity1(),"0..0");
 		assertFalse(rel.getMultiplicity1().equals("1..0"));
 		rel.setMultiplicity2("1..*");
 		assertEquals(rel.getMultiplicity2(),"1..*");
 		assertFalse(rel.getMultiplicity2().equals("*..*"));
-		
-		//Testing Dash, Undash, and toggleDash
+	}
+		//Testing Dash
+	public void testRelDash() {
 		rel.dash();
 		assertEquals(rel.isDashed(), true);
 		assertFalse(rel.isDashed() == false);
+	}
+		//Testing Undash
+	public void testRelUndash() {
 		rel.undash();
 		assertEquals(rel.isDashed(), false);
 		assertFalse(rel.isDashed() == true);
+	}
+		//Testing toggleDash
+	public void testRelToggleDash() {
 		rel.toggleDash();
 		assertEquals(rel.isDashed(), true);
 		assertFalse(rel.isDashed() == false);
+	}
 		
 		//Testing setArrow
+	public void testRelSetArrow() {
 		rel.setArrow1(3);
 		assertEquals(rel.getArrow1(), 3);
 		assertFalse(rel.getArrow1() == 2);
@@ -67,6 +81,7 @@ public class Tests {
 		assertEquals(rel.getArrow2(), 1);
 		assertFalse(rel.getArrow2() == 5);
 	}
+	
 	
 	@Test
 	public void testDefaultValuesCB() {
