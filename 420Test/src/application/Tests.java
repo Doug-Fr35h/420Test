@@ -102,7 +102,7 @@ public class Tests {
 	public void testSetTitleCB() {
 		//classBox Box1 = new classBox();
 		Box1.setTitle("Title2");
-		assertEquals("New Title Should be            : Title", Box1.getTitle(), "Title2");
+		assertEquals("New Title Should be            		: Title", Box1.getTitle(), "Title2");
 	}
 	
 	@Test
@@ -116,6 +116,7 @@ public class Tests {
 	public void testSetAttribCB() {
 		//classBox Box1 = new classBox();
 		Box1.setAttributes("Attrib1");
+
 		assertEquals("New Attributes should be       : Attrib1", Box1.getAttributes(), "Attrib1");
 	}
 	
