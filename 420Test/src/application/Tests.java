@@ -106,13 +106,6 @@ public class Tests {
 	}
 	
 	@Test
-	public void testTitle() {
-		String newTitle = "Testy Title";
-		Box1.setTitle(newTitle);
-		assertEquals("New Title Should Be					:" + newTitle, Box1.getTitle(), newTitle);
-	}
-	
-	@Test
 	public void testTitle2() {
 		//String newTitle = "Testy Title";
 		//Box1.setTitle(newTitle);
