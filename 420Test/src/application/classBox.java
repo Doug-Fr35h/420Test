@@ -10,6 +10,8 @@ public class classBox {
 	private double yLocation;
 	private relationship[] connections;
 	final private ID uniqueID;
+	private double width; //100
+	private double height; //130
 	
 
 	//CONSTRUCTOR
@@ -22,6 +24,8 @@ public class classBox {
 		this.yLocation = 20.; // ANYBODY KNOW ANYTHING ABOUT THAT?
 		this.connections = new relationship[1];
 		this.uniqueID = new ID();
+		this.width = 100;
+		this.height = 130;
 	}
 	
 	//---setters ---
@@ -104,6 +108,25 @@ public class classBox {
 		return this.extraComponents;
 	}
 	
+	public int getRelationshipCount(){
+		return this.connections.length;
+	}
+	
+	public relationship getRelIndexOf(int index){
+		if (index >= 0 && index < connections.length){
+			return connections[index];
+		}
+		System.out.println("RelIndexOf says: Bad Index");
+		return null;
+	}
+	
+	public double getWidth(){
+		return this.width;
+	}
+	
+	public double getHeight(){
+		return this.height;
+	}
 	//get location
 	public double getXLocation(){
 		return this.xLocation;
