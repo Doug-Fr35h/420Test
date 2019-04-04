@@ -133,7 +133,7 @@ public class Tests {
 	@Test
 	public void testSetCoordsCB() {
 		//classBox Box1 = new classBox();
-		Box1.updateLocation(3, 24);
+		Box1.setLocation(3, 24);
 		assertEquals("New xLocation should be        : 3", Box1.getXLocation(), 3, 3);
 		assertEquals("New yLocation should be        : 24", Box1.getYLocation(), 24, 3);
 	}
