@@ -29,19 +29,10 @@ public class JUnitOnClassBox {
 	}
 
 	@Test
-	public void setOperators() {
+	public void setTitle() {
 		classBox Box1 = new classBox();
 		Box1.setTitle("Title2");
-		Box1.setAttributes("Attrib1");
-		Box1.setOperations("Oper1");
-		Box1.setExtraComponents("EC1");
-		Box1.updateLocation(3, 24);
 		assertEquals("New Title Should be            : Title", Box1.getTitle(), "Title2");
-		assertEquals("New Attributes should be       : -", Box1.getAttributes(), "Attrib1");
-		assertEquals("New Opperations should be      : -", Box1.getOperations(), "Oper1");
-		assertEquals("New Extra Components should be : ", Box1.getExtraComponents(), "EC1");
-		assertEquals("New xLocation should be        : ", Box1.getXLocation(), 3, 3);
-		assertEquals("New yLocation should be        : ", Box1.getYLocation(), 24, 3);
 	}
 	
 	@Test
@@ -56,6 +47,35 @@ public class JUnitOnClassBox {
 		//String newTitle = "Testy Title";
 		//Box1.setTitle(newTitle);
 		assertEquals("New Title Should Be					:", Box1.getTitle(), "Title");
+	}
+	
+	@Test
+	public void setAttrib() {
+		classBox Box1 = new classBox();
+		Box1.setAttributes("Attrib1");
+		assertEquals("New Attributes should be       : -", Box1.getAttributes(), "Attrib1");
+	}
+	
+	@Test
+	public void setOper() {
+		classBox Box1 = new classBox();
+		Box1.setOperations("Oper1");
+		assertEquals("New Operations should be      : -", Box1.getOperations(), "Oper1");
+	}
+	
+	@Test
+	public void setEC() {
+		classBox Box1 = new classBox();
+		Box1.setExtraComponents("EC1");
+		assertEquals("New Extra Components should be : ", Box1.getExtraComponents(), "EC1");
+	}
+	
+	@Test
+	public void setCoords() {
+		classBox Box1 = new classBox();
+		Box1.updateLocation(3, 24);
+		assertEquals("New xLocation should be        : ", Box1.getXLocation(), 3, 3);
+		assertEquals("New yLocation should be        : ", Box1.getYLocation(), 24, 3);
 	}
 	
 }
