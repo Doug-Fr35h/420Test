@@ -6,10 +6,16 @@ import org.junit.Test;
 import org.junit.*;
 
 public class JUnitOnClassBox {
-
+	
+	classBox Box1 = new classBox();
+	classBox Box2 = new classBox();
+	classBox Box3 = new classBox();
+	relationship R1 = new relationship();
+	relationship R2 = new relationship();
+	
 	@Test
 	public void defaultValues() {
-		classBox Box1 = new classBox();
+		//classBox Box1 = new classBox();
 		assertEquals("Default Title Should be            : Title", Box1.getTitle(), "Title");
 		assertEquals("Default Attributes should be       : -", Box1.getAttributes(), "-");
 		assertEquals("Default Opperations should be      : -", Box1.getOperations(), "-");
@@ -21,6 +27,9 @@ public class JUnitOnClassBox {
 		assertEquals("Default width should be             : 100", Box1.getWidth(), 100, 3);
 		assertEquals("Default height should be              : 130", Box1.getHeight(), 130, 3);
 	}
+	
+	//@Test
+	//public void 
 
     // fields used together with @Parameter must be public
 /*    @Parameter(0)
@@ -30,10 +39,7 @@ public class JUnitOnClassBox {
 //    @Parameter(2)
     public int result;/**/
 	
-	//public classBox box1;
-	public classBox box2;
-	public relationship R1;
-	public relationship R2;
+
 
     // creates the test data
    /* @Parameters
@@ -51,9 +57,5 @@ public class JUnitOnClassBox {
 
 
     // class to be tested
-    class MyClass {
-/*        public int multiply(int i, int j) {
-            return i *j;
-        }/**/
-    }
+
 }
