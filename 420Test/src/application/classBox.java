@@ -1,5 +1,8 @@
 package application;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class classBox {
 	
 	// classBox Variables
@@ -27,6 +30,8 @@ public class classBox {
 		this.uniqueID = new ID();
 		this.width = 100;
 		this.height = 130;
+		//IDmap.put(this.uniqueID, this);
+		
 	}
 	
 	//Delete Function
@@ -36,7 +41,7 @@ public class classBox {
 			connections[i] = null;
 		}
 		//delete the mapping of the UUID for this node
-		
+		//IDmap.remove(this.uniqueID);
 		this.uniqueID = null;
 		this.title = null;
 		this.attributes = null;
@@ -154,12 +159,12 @@ public class classBox {
 	}
 	
 	//get location
-			public double getXLocation(){
-				return this.xLocation;
-			}
-			public double getYLocation(){
-				return this.yLocation;
-			}
+		public double getXLocation(){
+			return this.xLocation;
+		}
+		public double getYLocation(){
+			return this.yLocation;
+		}
 	
 	public ID getID(){
 		return this.uniqueID;

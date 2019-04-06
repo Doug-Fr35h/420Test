@@ -2,30 +2,17 @@ package application;
 
 import java.util.*;
 
-/*
- * ID class as it stands right now, assigns uuid's, keeps track of them
- * and also classBoxes to know what ID's are assigned to what boxes, 
- * 
- * In Future Iters: It will only assign ID's 
- * 		classBox.java will remember all ID's using mapping
- * 		the relay functions may be eliminated as well. Thats
- * 		future-Us's problem to figure out. 
- */
-
 public class ID {
 
-	UUID uniqueID;
-	ArrayList<UUID> UUIDlist = new ArrayList<UUID>();
-	ArrayList<classBox> nodeList = new ArrayList<classBox>();
-//	UUID[] UUIDlist = new UUID[];
+	private UUID uniqueID;
+	public Map< UUID,classBox> IDmap = new HashMap< UUID,classBox>(); 
 
 	/*
 	 * Constructor / assigns UUID
 	 */
 	public UUID ID(classBox cB) {
 		uniqueID = UUID.randomUUID();
-		UUIDlist.add(uniqueID);
-		nodeList.add(cB);
+		IDmap.put(uniqueID, cB);
 		return uniqueID;
 	}
 
@@ -37,23 +24,8 @@ public class ID {
 		return this.uniqueID.toString();
 	}
 
-	/*
-	 * This assumes that we aren't DELETING any nodes, therefore all ID's and
-	 * classboxes (assuming we only use classboxes) are in the same index with
-	 * respect to each other.
-	 * 
-	 * This may need tinkered in the future if changes are made
-	 * 
-	 * UPDATE: This WILL be tinkered in the sense that it won't exist here
-	 * and will be relocated and completely rewritten in classBox.java
-	 */
-	public classBox getClassBox(UUID id) {
-		int index = UUIDlist.indexOf(id);
-		return nodeList.get(index);
-	}
-
 	public classBox getClassBox() {
-		return nodeList.get(UUIDlist.indexOf(this));
+		return IDmap.get(this);
 	}
 
 	/*
@@ -73,7 +45,7 @@ public class ID {
 	 * 			longer cases in there. It gets ugly. 
 	 * 
 	 * 			Stay Sharp my dudes
-	 */
+	 * /
 				public String getTitle(){
 					return this.getClassBox().getTitle();
 				}
@@ -96,6 +68,6 @@ public class ID {
 			
 				public String getOperations(){
 					return this.getClassBox().getOperations();
-				}
+				}/**/
 	
 }

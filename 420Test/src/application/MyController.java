@@ -77,18 +77,11 @@ public class MyController implements Initializable {
 	    }	
 
 	public void createNode() {
-		//classBox box = new classBox();
+		classBox box = new classBox();
 		//root.getChildren().addAll(box);
 		
 		Box t = new Box(nodeSpace, propSpace);
 		nodeSpace.getChildren().add(t);
-		/*
-		Text title = new Text();
-		title.setText("Title");
-		title.setX(20);
-        title.setY(20);
-        nodeSpace.getChildren().add(title);
-		*/
 	}
 	
 	@FXML
