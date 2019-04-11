@@ -12,74 +12,70 @@ public class Tests {
 	relationship R1 = new relationship();
 	relationship R2 = new relationship();
 	
-	relationship rel = new relationship();
-	classBox end1 = new classBox();
-	classBox end2 = new classBox();
-	
 	@org.junit.Test
 	public void testRelConstructor() {
 		
 		
 		//Testing Constructor
-		assertEquals(rel.getEnd1(), null);
-		assertEquals(rel.getEnd2(), null);
-		assertEquals(rel.getTitle(),"");
-		assertEquals(rel.getMultiplicity1(),"");
-		assertEquals(rel.getMultiplicity2(),"");
-		assertEquals(rel.isDashed(), false);
-		assertEquals(rel.getArrow1(), 0);
-		assertEquals(rel.getArrow2(), 0);
+		assertEquals(R1.getEnd1(), null);
+		assertEquals(R1.getEnd2(), null);
+		assertEquals(R1.getTitle(),"");
+		assertEquals(R1.getMultiplicity1(),"");
+		assertEquals(R1.getMultiplicity2(),"");
+		assertEquals(R1.isDashed(), false);
+		assertEquals(R1.getArrow1(), 1);
+		assertEquals(R1.getArrow2(), 1);
 	}
 		//Testing setRelationship
 	public void testRelSetRelationship() {
-		rel.setRelationship(end1, end2);
-		assertEquals(rel.getEnd1(), end1);
-		assertFalse(rel.getEnd1() == end2);
-		assertEquals(rel.getEnd2(), end2);
-		assertFalse(rel.getEnd2() == end1);
+		R1.setRelationship(Box1, Box2);
+		assertEquals(R1.getEnd1(), Box1);
+		assertFalse(R1.getEnd2() == Box2);
+		assertEquals(R1.getEnd2(), Box2);
+		assertFalse(R1.getEnd2() == Box1);
 	}
 		//Testing setRelationshipTitle
-	public void testRelSetTitle() {
-		rel.setRelationshipTitle("testTitle");
-		assertEquals(rel.getTitle(), "testTitle");
-		assertFalse(rel.getTitle().equals("Title"));
+	public void testRelTitle() {
+		R1.setRelationshipTitle("testTitle");
+		assertEquals(R1.getTitle(), "testTitle");
+		assertFalse(R1.getTitle().equals("Title"));
 	}
 		//Testing setMultiplicity
 	public void testRelSetMultiplicity() {
-		rel.setMultiplicity1("0..0");
-		assertEquals(rel.getMultiplicity1(),"0..0");
-		assertFalse(rel.getMultiplicity1().equals("1..0"));
-		rel.setMultiplicity2("1..*");
-		assertEquals(rel.getMultiplicity2(),"1..*");
-		assertFalse(rel.getMultiplicity2().equals("*..*"));
+		R1.setMultiplicity1("0..0");
+		assertEquals(R1.getMultiplicity1(),"0..0");
+		assertFalse(R1.getMultiplicity1().equals("1..0"));
+		R1.setMultiplicity2("1..*");
+		assertEquals(R1.getMultiplicity2(),"1..*");
+		assertFalse(R1.getMultiplicity2().equals("*..*"));
 	}
 		//Testing Dash
 	public void testRelDash() {
-		rel.dash();
-		assertEquals(rel.isDashed(), true);
-		assertFalse(rel.isDashed() == false);
+		R1.dash();
+		assertEquals(R1.isDashed(), true);
+		assertFalse(R1.isDashed() == false);
 	}
 		//Testing Undash
 	public void testRelUndash() {
-		rel.undash();
-		assertEquals(rel.isDashed(), false);
-		assertFalse(rel.isDashed() == true);
+		R1.undash();
+		assertEquals(R1.isDashed(), false);
+		assertFalse(R1.isDashed() == true);
 	}
 		//Testing toggleDash
 	public void testRelToggleDash() {
-		rel.toggleDash();
-		assertEquals(rel.isDashed(), true);
-		assertFalse(rel.isDashed() == false);
+		R1.toggleDash();
+		assertEquals(R1.isDashed(), true);
+		assertFalse(R1.isDashed() == false);
 	}
 		
 		//Testing setArrow
 	public void testRelSetArrow() {
-		rel.setArrow1(3);
-		assertEquals(rel.getArrow1(), 3);
-		assertFalse(rel.getArrow1() == 2);
-		rel.setArrow2(1);
-		assertEquals(rel.getArrow2(), 1);
-		assertFalse(rel.getArrow2() == 5);
+		R1.setArrow1(3);
+		assertEquals(R1.getArrow1(), 3);
+		assertFalse(R1.getArrow1() == 2);
+		R1.setArrow2(1);
+		assertEquals(R1.getArrow2(), 1);
+		assertFalse(R1.getArrow2() == 5);
 	}
 	
 	
@@ -92,7 +88,8 @@ public class Tests {
 		assertEquals("Default Extra Components should be	: (nothing)", Box1.getExtraComponents(), "");
 		assertEquals("Default xLocation should be			: 20", Box1.getXLocation(), 20, 3);
 		assertEquals("Default yLocation should be			: 20", Box1.getYLocation(), 20, 3);
-		assertEquals("Default connections.size				: 1", Box1.getRelationshipCount(), 1);
+		assertEquals("Default connections.size				: 1", Box1.getRelationshipLength(), 1);
+		assertEquals("Default connections.count				: 0", Box1.getRelationshipCount(), 0);				
 		assertEquals("Default connections[0] should be		: null ",Box1.getRelIndexOf(0), null);
 		assertEquals("Default width should be				: 100", Box1.getWidth(), 100, 3);
 		assertEquals("Default height should be				: 130", Box1.getHeight(), 130, 3);
@@ -137,9 +134,56 @@ public class Tests {
 	@Test
 	public void testSetCoordsCB() {
 		//classBox Box1 = new classBox();
-		Box1.updateLocation(3, 24);
+		Box1.setLocation(3, 24);
 		assertEquals("New xLocation should be        : 3", Box1.getXLocation(), 3, 3);
 		assertEquals("New yLocation should be        : 24", Box1.getYLocation(), 24, 3);
+	}
+	
+	/*
+	 * 
+	 */
+	public static void Inspect(relationship r){
+		System.out.printf("+--------------------+\n");
+		/*int sp = 2;
+		if (r.getTitle().length()!=0)
+			sp= (20-r.getTitle().length())/2;
+		System.out.println(sp);
+		System.out.printf("|%-sps|\n", r.getTitle());/**/
+		System.out.printf("|%-20s|\n", r.getTitle());
+		System.out.printf("+--------------------+\n");
+		System.out.printf("| head:%14s|\n", r.getEnd1().getTitle());
+		System.out.printf("| tail:%14s|\n", r.getEnd2().getTitle());
+		System.out.printf("| h-type:%12d|\n", r.getArrow1());
+		System.out.printf("| t-type:%12d|\n", r.getArrow2());
+		System.out.printf("| h-multi.:%10s|\n", r.getMultiplicity1());
+		System.out.printf("| t-multi.:%10s|\n", r.getMultiplicity2());
+		String b = "Solid";
+		if (r.isDashed()){
+			b = "Dashed";
+		}
+		System.out.printf("| State:%13s|\n", b);
+		System.out.printf("+--------------------+\n");
+	}
+	
+	@Test
+	public void testConnectionTitle() {
+		classBox Box1 = new classBox();
+		classBox Box2 = new classBox();
+		Box2.setTitle("Box Two");
+		relationship R1 = new relationship();
+		R1.setRelationship(Box1, Box2);
+		assertTrue("testConnectionTitle() Failed", Box1.getOtherEnd(R1).getTitle().equals("Box Two"));
+	}
+	
+	@Test
+	public void testEndCoords() {
+		classBox Box1 = new classBox();
+		classBox Box2 = new classBox();
+		Box2.setLocation(69.0, 420.0);
+		relationship R1 = new relationship();
+		R1.setRelationship(Box1, Box2);
+		assertTrue("testCoordsX() Failed", Box1.getOtherEnd(R1).getXLocation() == 69.0);
+		assertTrue("testCoordsY() Failed", Box1.getOtherEnd(R1).getYLocation() == 420.0);
 	}
 
 }
