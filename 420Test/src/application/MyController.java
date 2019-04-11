@@ -69,8 +69,7 @@ public class MyController implements Initializable {
             
         });
         pane.setOnMouseReleased(e ->{
-        	
-        pane.setOnMousePressed(null);     
+        	   
         });
         
         return currentLine;
