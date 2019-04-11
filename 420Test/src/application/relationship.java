@@ -29,7 +29,18 @@ public class relationship {
 		this.multiplicity2 = "";
 		this.isdashed = false;
 		this.setArrow1(1);
-		this.setArrow1(2);
+		this.setArrow2(1);
+		this.uniqueID = new ID(this);
+		
+	}
+	
+	public relationship(){
+		this.title = "";
+		this.multiplicity1 = "";
+		this.multiplicity2 = "";
+		this.isdashed = false;
+		this.setArrow1(1);
+		this.setArrow2(1);
 		this.uniqueID = new ID(this);
 		
 	}
@@ -46,6 +57,10 @@ public class relationship {
 	}
 
 	//-----GETTERS-----GETTERS-----GETTERS-----GETTERS-----GETTERS-----GETTERS
+	
+	public ID getID(){
+		return this.uniqueID;
+	}
 	
 	public classBox getEnd1(){
 		return this.End1;

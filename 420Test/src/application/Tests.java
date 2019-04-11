@@ -23,8 +23,8 @@ public class Tests {
 		assertEquals(R1.getMultiplicity1(),"");
 		assertEquals(R1.getMultiplicity2(),"");
 		assertEquals(R1.isDashed(), false);
-		assertEquals(R1.getArrow1(), 0);
-		assertEquals(R1.getArrow2(), 0);
+		assertEquals(R1.getArrow1(), 1);
+		assertEquals(R1.getArrow2(), 1);
 	}
 		//Testing setRelationship
 	public void testRelSetRelationship() {
