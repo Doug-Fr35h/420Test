@@ -53,6 +53,25 @@ public class classBox {
 		title = newTitle;
 	}
 	
+	public void setWidth(double newWidth){
+		if (newWidth > 0)
+			this.width = newWidth;
+	}
+	
+	public void setHeight(double newHeight){
+		if (newHeight > 0)
+			this.height = newHeight;
+	}
+	
+	//For a possible automatic adjuster, just add 10 until satisfied
+	public void bumpHeight(){
+		height+=10;
+	}
+	
+	public void trimHeight(){
+		height-=5;
+	}
+	
 	public void addConnection(relationship R){
 		//System.out.println("addConnction() entered:");
 		//this.printConnections();
