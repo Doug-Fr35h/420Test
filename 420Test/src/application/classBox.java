@@ -16,7 +16,6 @@ public class classBox {
 	private ID uniqueID;
 	private double width; //100 default
 	private double height; //130 default
-	// private mapping of UUID's
 
 	//CONSTRUCTOR
 	public classBox() {
@@ -27,7 +26,7 @@ public class classBox {
 		this.xLocation = 20.; // PREFER TO SET THIS TO MOUSE LOCATION
 		this.yLocation = 20.; // ANYBODY KNOW ANYTHING ABOUT THAT?
 		this.connections = new relationship[1];
-		this.uniqueID = new ID();
+		this.uniqueID = new ID(this);
 		this.width = 100;
 		this.height = 130;
 		//IDmap.put(this.uniqueID, this);

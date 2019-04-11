@@ -20,6 +20,19 @@ public class relationship {
 	private boolean isdashed = false;
 	private arrow arrow1 = new arrow();
 	private arrow arrow2 = new arrow();
+	private ID uniqueID;
+	
+	public relationship(classBox head, classBox tail){
+		this.setRelationship(head, tail);
+		this.title = "";
+		this.multiplicity1 = "";
+		this.multiplicity2 = "";
+		this.isdashed = false;
+		this.setArrow1(1);
+		this.setArrow1(2);
+		this.uniqueID = new ID(this);
+		
+	}
 	
 	// delete function:
 	public void delete(){

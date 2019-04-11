@@ -5,16 +5,43 @@ import java.util.*;
 public class ID {
 
 	private UUID uniqueID;
-	public Map< UUID,classBox> IDmap = new HashMap< UUID,classBox>(); 
+	public Map< UUID,classBox> classBoxIDmap = new HashMap< UUID,classBox>();
+	public Map< UUID,relationship> relationshipIDmap = new HashMap< UUID,relationship>();
 
 	/*
 	 * Constructor / assigns UUID
 	 */
-	public UUID ID(classBox cB) {
+	/*public ID(){
 		uniqueID = UUID.randomUUID();
-		IDmap.put(uniqueID, cB);
-		return uniqueID;
+		Class.forName(Thread.currentThread().getStackTrace()[2].getClassName())
+		if (caller.class = classBox){
+			classBoxIDmap.put(uniqueID, caller);
+		} else if (caller.class = relationship){
+			relationshipIDmap.put(uniqueID, caller);
+		}	
+		
+	}/**/
+	
+	public ID(classBox cB) {
+		uniqueID = UUID.randomUUID();
+		classBoxIDmap.put(uniqueID, cB);
+		System.out.println("Create ID for classBox " + cB.getTitle() + ": "+uniqueID);
+		System.out.println("Also known as this: " + this);
+		//return this;
 	}
+	
+	public ID(relationship R){
+		uniqueID = UUID.randomUUID();
+		relationshipIDmap.put(uniqueID, R);
+		System.out.println("Create ID for relationship " + R.getTitle() + ": "+uniqueID);
+		System.out.println("Also known as this: " + this);
+		//return this;
+	}
+	
+	public UUID getID(){
+		return this.uniqueID;
+	}
+	
 
 	/*
 	 * (non-Javadoc)
@@ -25,7 +52,11 @@ public class ID {
 	}
 
 	public classBox getClassBox() {
-		return IDmap.get(this);
+		return classBoxIDmap.get(this);
+	}
+	
+	public relationship getRelationship() {
+		return relationshipIDmap.get(this);
 	}
 
 	/*
