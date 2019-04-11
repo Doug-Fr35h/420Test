@@ -62,7 +62,7 @@ class DraggableNode extends FlowPane {
         //Creates event for mouse drag
         //Finds the offset of the scene and mouse coordinates
         // Adds the offset to the Node coordinate variables 
-        //Sets the newly offsetted Node coordinates as its own translation variable
+        //Sets the newly offset Node coordinates as its own translation variable
         //Applies it to the scene
         //Sets dragging to true
         // Sets the scene coordinates to the mouse coordinates
@@ -117,7 +117,7 @@ class DraggableNode extends FlowPane {
         return view;
     }
 
-    //Sets current moveToFront to the inputted boolean moveToFront
+    //Sets current moveToFront to the input boolean moveToFront
     public void setMoveToFront(boolean moveToFront) {
         this.moveToFront = moveToFront;
     }

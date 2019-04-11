@@ -69,8 +69,11 @@ class Box extends DraggableNode{
         //Makes all children align to the center;
         nodeID.setAlignment(Pos.CENTER);
         
+        //Layout of Variable Node
         nodeVar.setLayoutX(30);
         nodeVar.setLayoutY(30 + nodeID.getPrefHeight());
+        
+        //Layout of Method node
         nodeMet.setLayoutX(30);
         nodeMet.setLayoutY(30 + nodeVar.getPrefHeight());
         
