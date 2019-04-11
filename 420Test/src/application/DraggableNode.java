@@ -16,14 +16,19 @@ class DraggableNode extends FlowPane {
     // mouse position
     private double mousex = 0;
     private double mousey = 0;
+    //The node that will be dragged
     private Node view;
+    //Checks if Node is dragging
     private boolean dragging = false;
+    //Checks if Node is in front
     private boolean moveToFront = true;
 
+    //Constructor: Calls Initialization fxn
     public DraggableNode() {
         init();
     }
 
+    //Constructor: Makes view == input node & calls initialization fxn
     public DraggableNode(Node view) {
         this.view = view;
 
@@ -33,6 +38,10 @@ class DraggableNode extends FlowPane {
 
     private void init() {
 
+    	// Creates Mouse Press event
+    	//Sets scene coordinates to mouse
+    	//Sets layout coordinates to variables representing the Node's coordinates
+    	//Checks if the node is in front
         onMousePressedProperty().set(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -50,7 +59,14 @@ class DraggableNode extends FlowPane {
             }
         });
 
-        //Event Listener for MouseDragged
+        //Creates event for mouse drag
+        //Finds the offset of the scene and mouse coordinates
+        // Adds the offset to the Node coordinate variables 
+        //Sets the newly offsetted Node coordinates as its own translation variable
+        //Applies it to the scene
+        //Sets dragging to true
+        // Sets the scene coordinates to the mouse coordinates
+        //repeats
         onMouseDraggedProperty().set(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -78,7 +94,8 @@ class DraggableNode extends FlowPane {
                 event.consume();
             }
         });
-
+        
+        //If Node is clicked, set drag to false
         onMouseClickedProperty().set(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -89,35 +106,28 @@ class DraggableNode extends FlowPane {
 
     }
 
-    /**
-     * @return the dragging
-     */
+    //Returns if the node is dragging
     protected boolean isDragging() {
         return dragging;
     }
 
 
-    /**
-     * @return the view
-     */
+    //Returns the view Node
     public Node getView() {
         return view;
     }
 
-    /**
-     * @param moveToFront the moveToFront to set
-     */
+    //Sets current moveToFront to the inputted boolean moveToFront
     public void setMoveToFront(boolean moveToFront) {
         this.moveToFront = moveToFront;
     }
 
-    /**
-     * @return the moveToFront
-     */
+    //Returns moveToFront
     public boolean isMoveToFront() {
         return moveToFront;
     }
     
+    //Removes the Node n
     public void removeNode(Node n) {
         getChildren().remove(n);
     }

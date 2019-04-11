@@ -11,19 +11,27 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
 class Box extends DraggableNode{
+	//Title text
 	private TextField title = new TextField();
+	//Variable text
 	private TextArea var = new TextArea();
+	//Method text
 	private TextArea meth = new TextArea();
 	//private Text attributes;
 	//private Text operations;
 	//private Text extraComponents;
 	
+	//The Pane which will hold the title
 	private FlowPane nodeID = new FlowPane();
+	//The Pane which holds the Variables
 	private FlowPane nodeVar = new FlowPane();
+	//The Pane which holds the methods
 	private FlowPane nodeMet = new FlowPane();
+	//The main Node which holds all Panes and can drag
 	private DraggableNode nodeMain = new DraggableNode();
 	
-	
+	//Constructor: Creates the basic box
+	//Requires the Pane which the node will appear in and the Pane which it's properties will be in
 	public Box(AnchorPane nodeSpace, AnchorPane propSpace)
 	{		
 		//Sizes
@@ -33,7 +41,7 @@ class Box extends DraggableNode{
         nodeVar.setPrefSize(200, 100);
         nodeMet.setPrefSize(200, 100);
         
-        // Define the style via CSS
+        // the style via CSS
         nodeMain.setStyle(
             "-fx-background-color: black; "
             + "-fx-text-fill: black; "
@@ -87,7 +95,10 @@ class Box extends DraggableNode{
 		meth.setPrefHeight(nodeMet.getPrefHeight());
         nodeMet.getChildren().add(meth);
         
+        //Adds all Panes as children of nodeMain
         nodeMain.getChildren().addAll(nodeID,nodeVar,nodeMet);
+        
+        //Adds nodeMain to be the child of the AnchorPane which it will spawn in
         nodeSpace.getChildren().add(nodeMain);
 	}
 	
