@@ -1,8 +1,14 @@
 package application;
 
 import java.awt.Button;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -19,6 +25,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
@@ -41,6 +48,9 @@ public class MyController implements Initializable {
 	
 	@FXML
 	private TextField titleText;
+	
+	@FXML
+	private MenuItem loadFile;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -88,5 +98,41 @@ public class MyController implements Initializable {
 	{
 		Platform.exit();
 	}
+	
+	/*
+	* Need to add functionality where when a file is opened the old window closes
+	* Need to add functionality where it can only open the correct extension
+	*
+	*	fileChooser.getExtensionFilters().addAll(
+	*		     new FileChooser.ExtensionFilter("Text Files", "*.txt")
+	*		    ,new FileChooser.ExtensionFilter("HTML Files", "*.htm")
+	*		);
+	*/
+	
+	FileChooser fileChooser = new FileChooser();
+	private Desktop desktop = Desktop.getDesktop();
+	@FXML
+	public void fileOpen() {
+		loadFile.setOnAction(
+	            new EventHandler<ActionEvent>() {
+	                @Override
+	                public void handle(final ActionEvent e) {
+	                    File file = fileChooser.showOpenDialog(root.getScene().getWindow());
+	                    if (file != null) {
+	                        openFile(file);
+	                    }
+	                }
+	            });
+	}
+	private void openFile(File file) {
+        try {
+            desktop.open(file);
+        } catch (IOException ex) {
+            Logger.getLogger(
+                MyController.class.getName()).log(
+                    Level.SEVERE, null, ex
+                );
+        }
+    }
 
 }
