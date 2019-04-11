@@ -54,6 +54,7 @@ public class relationship {
 		this.multiplicity2 = null;
 		this.arrow1 = null;
 		this.arrow2 = null;
+		uniqueID.relationshipIDmap.remove(uniqueID);
 	}
 
 	//-----GETTERS-----GETTERS-----GETTERS-----GETTERS-----GETTERS-----GETTERS

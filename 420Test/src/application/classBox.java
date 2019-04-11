@@ -39,9 +39,7 @@ public class classBox {
 			connections[i].delete();
 			connections[i] = null;
 		}
-		//delete the mapping of the UUID for this node
-		//IDmap.remove(this.uniqueID);
-		this.uniqueID = null;
+		this.uniqueID.classBoxIDmap.remove(uniqueID);
 		this.title = null;
 		this.attributes = null;
 		this.operations = null;
