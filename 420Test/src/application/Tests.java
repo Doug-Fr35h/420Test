@@ -26,6 +26,7 @@ public class Tests {
 		assertEquals(R1.getArrow1(), 1);
 		assertEquals(R1.getArrow2(), 1);
 	}
+	
 		//Testing setRelationship
 	public void testRelSetRelationship() {
 		R1.setRelationship(Box1, Box2);
@@ -137,6 +138,14 @@ public class Tests {
 		Box1.setLocation(3, 24);
 		assertEquals("New xLocation should be        : 3", Box1.getXLocation(), 3, 3);
 		assertEquals("New yLocation should be        : 24", Box1.getYLocation(), 24, 3);
+	}
+	
+	public void testingIDclassForSavePurposes(){
+		Box1.setTitle("class box A");
+		Box2.setTitle("Box Class B");
+		Box3.setTitle("CLASS BOX 3");
+		
+		
 	}
 	
 	/*
