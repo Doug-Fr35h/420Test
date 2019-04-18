@@ -11,6 +11,7 @@ public class Tests {
 	classBox Box3 = new classBox();
 	relationship R1 = new relationship();
 	relationship R2 = new relationship();
+	relationship R3 = new relationship();
 	
 	@org.junit.Test
 	public void testRelConstructor() {
@@ -37,7 +38,7 @@ public class Tests {
 	}
 		//Testing setRelationshipTitle
 	public void testRelTitle() {
-		R1.setRelationshipTitle("testTitle");
+		R1.setTitle("testTitle");
 		assertEquals(R1.getTitle(), "testTitle");
 		assertFalse(R1.getTitle().equals("Title"));
 	}
@@ -141,11 +142,54 @@ public class Tests {
 	}
 	
 	public void testingIDclassForSavePurposes(){
+		
 		Box1.setTitle("class box A");
 		Box2.setTitle("Box Class B");
 		Box3.setTitle("CLASS BOX 3");
 		
 		
+		R1.setRelationship(Box1, Box2);
+		R2.setRelationship(Box2, Box3);
+		R3.setRelationship(Box3, Box3);
+		
+		R1.setTitle("Tit A");
+		R1.setArrow1(2);
+		R2.setTitle("BCB");
+		R2.setArrow1(5);
+		R2.setArrow2(2);
+		R2.dash();
+		R2.setMultiplicity1("1..2");
+		R3.setTitle("the Outlier");
+		R3.setArrow1(2);
+		R3.setMultiplicity1("1..*");
+		
+		/*																	R3
+		                                                             	the Outlier
+		                                                           +-----------------+
+		  //(170,3)                        //(170,5)               |                 |
+		 +-------------+     Tit A       +---------------+         |      1..* +-------------+
+		 | class box A |<----------------|  Box Class B  |         +---------->| CLASS BOX 3 |
+		 +=============+      R1         +---------------+                     +=============+
+		 | Zach :0     |                 | DougieFresh   | 1..2   BCB          |             |
+		 +-------------+                 +---------------+<> - - - - - - - - ->+-------------+
+		                                 | fixGitHub()   |		R2                //(171,7)
+		                                 +---------------+
+		 */
+		
+		Box1.setOperations("Zach :0");
+		Box1.setLocation(170, 3);
+		Box1.setHeight(5);
+		Box1.setWidth(15);
+		
+		Box2.setAttributes("DougieFresh");
+		Box2.setOperations("fixGitHub()");
+		Box2.setLocation(170, 5);
+		Box2.setHeight(7);
+		Box2.setWidth(15);
+		
+		Box3.setLocation(171, 7);
+		Box3.setHeight(5);
+		Box3.setWidth(15);
 	}
 	
 	/*
