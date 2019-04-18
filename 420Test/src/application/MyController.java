@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javafx.application.Platform;
+import javafx.beans.property.DoubleProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -23,6 +24,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
@@ -30,6 +32,7 @@ import javafx.stage.Stage;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.control.MenuItem;
 
 public class MyController implements Initializable {
@@ -41,7 +44,7 @@ public class MyController implements Initializable {
     private AnchorPane createSpace;
 
 	@FXML
-    private AnchorPane propSpace;
+    private VBox buttonBox;
 
 	@FXML
 	private AnchorPane nodeSpace;
@@ -51,6 +54,9 @@ public class MyController implements Initializable {
 	
 	@FXML
 	private MenuItem loadFile;
+	
+	@FXML
+	private VBox editPane;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -89,7 +95,8 @@ public class MyController implements Initializable {
 		classBox box = new classBox();
 		//root.getChildren().addAll(box);
 		
-		Box t = new Box(nodeSpace, propSpace);
+		Box t = new Box(nodeSpace, editPane, box.getID());	
+		
 		nodeSpace.getChildren().add(t);
 	}
 	
@@ -134,5 +141,16 @@ public class MyController implements Initializable {
                 );
         }
     }
+	
+	//------------------------
+
+	public void toggleBoxEdit() {
+		if(editPane.isVisible() == true) {
+			editPane.setVisible(false);
+		} else {
+			editPane.setVisible(true);
+		}
+	}
+	//------------------------
 
 }
