@@ -7,10 +7,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
 class Box extends DraggableNode{
+	
+	private ID boxID;
 	//Title text
 	private TextField title = new TextField();
 	//Variable text
@@ -32,8 +35,9 @@ class Box extends DraggableNode{
 	
 	//Constructor: Creates the basic box
 	//Requires the Pane which the node will appear in and the Pane which it's properties will be in
-	public Box(AnchorPane nodeSpace, AnchorPane propSpace)
+	public Box(AnchorPane nodeSpace, VBox editor, ID identifyer)
 	{		
+		boxID = identifyer;
 		//Sizes
         nodeMain.setPrefSize(100, 130);
         
@@ -82,6 +86,7 @@ class Box extends DraggableNode{
         
 		title.setPromptText("Title");
 		title.setPrefWidth(100);
+		title.setEditable(false);
         nodeID.getChildren().add(title);
         
         //Add Text to var
