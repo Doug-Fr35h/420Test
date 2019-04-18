@@ -110,6 +110,10 @@ class Box extends DraggableNode{
         nodeSpace.getChildren().add(nodeMain);
 	}
 	
+	public ID getID(){
+		return this.boxID;
+	}
+	
 	
 	
 	/*

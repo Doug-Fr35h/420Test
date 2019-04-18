@@ -113,7 +113,8 @@ public class relationship {
 			End2.addConnection(this);
 	}
 	
-	public void setRelationshipTitle(String s){
+	
+	public void setTitle(String s){
 		this.title = s;
 	}
 	
