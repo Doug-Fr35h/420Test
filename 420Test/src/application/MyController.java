@@ -2,6 +2,7 @@ package application;
 
 import java.awt.Button;
 import java.awt.Desktop;
+import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -9,13 +10,17 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.imageio.ImageIO;
+
 import javafx.application.Platform;
 import javafx.beans.property.DoubleProperty;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.Cursor;
@@ -105,6 +110,60 @@ public class MyController implements Initializable {
 	{
 		Platform.exit();
 	}
+	
+	@FXML
+	public void exportToPNG(){
+		FileChooser fileChooser = new FileChooser();
+
+	    //Set extension filter
+	    fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png"));
+
+	    //Prompt user to select a file
+	    File file = fileChooser.showSaveDialog(null);
+
+	    if(file != null){
+	        try {
+	            //Pad the capture area
+	            WritableImage writableImage = new WritableImage((int)nodeSpace.getWidth(),
+	                    (int)nodeSpace.getHeight());
+	            nodeSpace.snapshot(null, writableImage);
+	            RenderedImage renderedImage = SwingFXUtils.fromFXImage(writableImage, null);
+	            //Write the snapshot to the chosen file
+	            ImageIO.write(renderedImage, "png", file);
+	        } catch (IOException ex) { ex.printStackTrace(); }
+	    }
+	}
+	
+	/*
+	public void exportToPDF(){
+		WritableImage nodeshot = nodeSpace.snapshot(new SnapshotParameters(), null);
+        File file = new File("chart.png");
+
+        try {
+        	ImageIO.write(SwingFXUtils.fromFXImage(nodeshot, null), "png", file);
+        } catch (IOException e) {
+
+        }
+
+        PDDocument doc = new PDDocument();
+        PDPage page = new PDPage();
+        PDImageXObject pdimage;
+        PDPageContentStream content;
+        try {
+            pdimage = PDImageXObject.createFromFile("chart.png",doc);
+            content = new PDPageContentStream(doc, page);
+            content.drawImage(pdimage, 100, 100);
+            content.close();
+            doc.addPage(page);
+            doc.save("pdf_file.pdf");
+            doc.close();
+            file.delete();
+        } catch (IOException ex) {
+            Logger.getLogger(MyController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+	*/
 	
 	/*
 	* Need to add functionality where when a file is opened the old window closes

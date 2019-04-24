@@ -22,7 +22,7 @@
                   <MenuItem mnemonicParsing="false" text="New" />
             <MenuItem fx:id="loadFile" mnemonicParsing="false" onAction="#fileOpen" text="Open" />
             <MenuItem mnemonicParsing="false" text="Save" />
-                  <MenuItem mnemonicParsing="false" text="Export" />
+                  <MenuItem mnemonicParsing="false" onAction="#exportToPNG" text="Export as PNG" />
             <MenuItem mnemonicParsing="false" onAction="#closeApp" text="Close" />
           </items>
         </Menu>
