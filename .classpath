@@ -3,5 +3,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="420Test/src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="External JARs/commons-io-2.6.jar"/>
+	<classpathentry kind="lib" path="External JARs/pdfbox-2.0.14.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
