@@ -8,11 +8,18 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
+
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 //import org.apache.commons.io.FileUtils;
 //import org.apache.pdfbox.pdmodel.PDDocument;
@@ -228,7 +235,7 @@ public class MyController implements Initializable {
 	}
 	
 	@FXML
-	public void exportToPNG() throws IOException{
+	public void export() throws IOException{
 		FileChooser fileChooser = new FileChooser();
 
 	    //Set extension filter
@@ -248,7 +255,8 @@ public class MyController implements Initializable {
 	            ImageIO.write(renderedImage, "png", file);
 	        } catch (IOException ex) { ex.printStackTrace(); }
 	    }
-	    /*
+	    
+	   
 	    try (PDDocument doc = new PDDocument())
         {
             PDPage page = new PDPage();
@@ -265,10 +273,20 @@ public class MyController implements Initializable {
             try (PDPageContentStream contents = new PDPageContentStream(doc, page))
             {
                 // draw the image at full size at (x=20, y=20)
-                contents.drawImage(pdImage, 20, 20);
+                //contents.drawImage(pdImage, 0, 0);
                 
                 // to draw the image at half size at (x=20, y=20) use
-                // contents.drawImage(pdImage, 20, 20, pdImage.getWidth() / 2, pdImage.getHeight() / 2); 
+                //contents.drawImage(pdImage, 20, 20, pdImage.getWidth(), pdImage.getHeight()); 
+                
+                
+                PDRectangle box = page.getMediaBox();
+                double factor = Math.min(box.getWidth() / nodeSpace.getWidth(), box.getHeight() / nodeSpace.getHeight());
+
+                float height = (float) (nodeSpace.getHeight() * factor);
+
+                // beware of inverted y axis here
+                contents.drawImage(pdImage, 0, box.getHeight() - height, (float) (nodeSpace.getWidth() * factor), height);
+                
             }
             
             String str = file.toString();
@@ -278,21 +296,8 @@ public class MyController implements Initializable {
             	pdfPath = str.substring(0, indexOfLast) + ".pdf";
             
             doc.save(pdfPath);
+            Files.delete(file.toPath());
         }
-	    /*
-	    
-	    
-	   //Convert FIle to String method
-	    /*
-	    
-	    String str = file.toString();
-        System.out.println(str);
-        int indexOfLast = str.lastIndexOf(".");
-        String pdfPath = str;
-        if(indexOfLast >= 0) 
-        	pdfPath = str.substring(0, indexOfLast) + ".pdf";
-        System.out.println(pdfPath);
-        */
 	}
 	
 	
