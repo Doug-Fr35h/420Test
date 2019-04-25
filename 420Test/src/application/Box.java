@@ -114,6 +114,13 @@ class Box extends DraggableNode{
 		return this.boxID;
 	}
 	
+	public void boxEditor(VBox editor) {
+		nodeMain.setOnMouseClicked(e ->{
+			if(editor.isVisible() == false) {
+				editor.setVisible(true);
+			}
+		});
+	}
 	
 	
 	/*
