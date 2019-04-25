@@ -66,7 +66,7 @@ public class MyController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		//propSpace.getChildren().add(titleText);		
-		createNode();
+		
 
 	}
 	
@@ -201,8 +201,6 @@ public class MyController implements Initializable {
         }
     }
 	
-	//------------------------
-
 	public void toggleBoxEdit() {
 		if(editPane.isVisible() == true) {
 			editPane.setVisible(false);
@@ -210,6 +208,6 @@ public class MyController implements Initializable {
 			editPane.setVisible(true);
 		}
 	}
-	//------------------------
+	
 
 }
