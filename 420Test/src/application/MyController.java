@@ -4,7 +4,9 @@ import java.awt.Button;
 import java.awt.Desktop;
 import java.awt.image.RenderedImage;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -45,6 +47,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.MenuItem;
+import java.util.*;
 
 public class MyController implements Initializable {
 
@@ -68,6 +71,13 @@ public class MyController implements Initializable {
 	
 	@FXML
 	private VBox editPane;
+	
+	public static ArrayList<Box> boxes = new ArrayList<Box>(10);
+	
+	public ArrayList<Line> lines = new ArrayList<Line>(10);
+	
+	@FXML
+	FileChooser fc = new FileChooser();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -107,7 +117,8 @@ public class MyController implements Initializable {
 		//root.getChildren().addAll(box);
 		
 		Box t = new Box(nodeSpace, editPane, box.getID());	
-		
+		boxes.ensureCapacity(boxes.size() + 5);
+		boxes.add(t);
 		nodeSpace.getChildren().add(t);
 		
 		if(editPane.isVisible() == false) {
@@ -119,6 +130,78 @@ public class MyController implements Initializable {
 	public void closeApp() 
 	{
 		Platform.exit();
+	}
+	
+	@FXML
+	public void open() throws FileNotFoundException
+	{	
+		nodeSpace.getChildren().clear();
+		boxes.clear();
+		//FileChooser fc = new FileChooser();
+		
+		File file = fc.showOpenDialog(nodeSpace.getScene().getWindow());
+		Scanner scanner = new Scanner(file);
+		while(scanner.hasNext()) 
+		{
+			String title = scanner.nextLine();
+			String vars = "";
+			int numVars = scanner.nextInt();
+			scanner.nextLine();
+			for(int i = numVars; i > 0; --i)
+			{
+				vars += scanner.nextLine() + " \n";
+			}
+			
+			String methods = "";
+			int numMethods = scanner.nextInt();
+			scanner.nextLine();
+			for(int i = numMethods; i > 0; --i)
+			{
+				methods += scanner.nextLine() + " \n";
+			}
+			double x = scanner.nextDouble();
+			double y = scanner.nextDouble();
+			if(scanner.hasNextLine())
+				scanner.nextLine();
+			Box t = new Box(nodeSpace, title, vars, methods, x, y);
+			boxes.ensureCapacity(boxes.size() + 5);
+			boxes.add(t);
+			nodeSpace.getChildren().add(t);
+		}
+		System.out.println("After open: " + boxes.size());
+		scanner.close();
+	}
+	
+	@FXML
+	public void save() throws FileNotFoundException
+	{
+		//FileChooser fc = new FileChooser();
+		File file = fc.showSaveDialog(nodeSpace.getScene().getWindow());
+		PrintWriter pw = new PrintWriter(file);
+		for(Box box : boxes)
+		{
+			String title = box.getTitle().getText();
+			int numVars = box.getVars().getText().split("\n").length;
+			int numMethods = box.getMethods().getText().split("\n").length;
+			String[] vars =  box.getVars().getText().split("\n");
+			String[] methods = box.getMethods().getText().split("\n");
+			double x = box.getDragNode().getLayoutX() - 100.0;
+			double y = box.getDragNode().getLayoutY();
+			pw.println(title);
+			pw.println(numVars);
+			for(String s: vars)
+			{
+				pw.println(s);
+			}
+			pw.println(numMethods);
+			for(String s: methods)
+			{
+				pw.println(s);
+			}
+			pw.println(x);
+			pw.println(y);
+		}
+		pw.close();
 	}
 	
 	@FXML

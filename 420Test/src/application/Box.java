@@ -110,6 +110,100 @@ class Box extends DraggableNode{
         nodeSpace.getChildren().add(nodeMain);
 	}
 	
+	public Box(AnchorPane nodeSpace, String boxTitle, String boxVars, String boxMethods, double x, double y)
+	{		
+		//this.uniqueID = new ID(this);
+		//Sizes
+        nodeMain.setPrefSize(100, 130);
+        
+        nodeID.setPrefSize(200, 50);
+        nodeVar.setPrefSize(200, 100);
+        nodeMet.setPrefSize(200, 100);
+        
+        // the style via CSS
+        nodeMain.setStyle(
+            "-fx-background-color: black; "
+            + "-fx-text-fill: black; "
+            + "-fx-border-color: black;");
+        nodeID.setStyle(
+                "-fx-background-color: #FFFFFF; "
+                + "-fx-text-fill: black; "
+                + "-fx-border-color: black;");
+        nodeVar.setStyle(
+                "-fx-background-color: #FFFFFF; "
+                + "-fx-text-fill: black; "
+                + "-fx-border-color: black;");
+        nodeMet.setStyle(
+                "-fx-background-color: #FFFFFF; "
+                + "-fx-text-fill: black; "
+                + "-fx-border-color: black;");
+        // Position the node
+        nodeMain.setLayoutX(x + nodeMain.getPrefWidth());
+        nodeMain.setLayoutY(y);
+        
+        //Layout of first node
+        nodeID.setLayoutX(30);
+        nodeID.setLayoutY(30);
+        
+        //Makes all children align to the center;
+        nodeID.setAlignment(Pos.CENTER);
+        
+        //Layout of Variable Node
+        nodeVar.setLayoutX(30);
+        nodeVar.setLayoutY(30 + nodeID.getPrefHeight());
+        
+        //Layout of Method node
+        nodeMet.setLayoutX(30);
+        nodeMet.setLayoutY(30 + nodeVar.getPrefHeight());
+        
+        
+        // Add Text to title 
+        
+		title.setText(boxTitle);
+		title.setPrefWidth(100);
+        nodeID.getChildren().add(title);
+        
+        //Add Text to var
+        
+        var.setText(boxVars);
+		var.setPrefWidth(nodeVar.getPrefWidth());
+		var.setPrefHeight(nodeVar.getPrefHeight());
+        nodeVar.getChildren().add(var);
+        
+        //Add Text to meth(ods)
+        
+        meth.setText(boxMethods);
+		meth.setPrefWidth(nodeMet.getPrefWidth());
+		meth.setPrefHeight(nodeMet.getPrefHeight());
+        nodeMet.getChildren().add(meth);
+        
+        //Adds all Panes as children of nodeMain
+        nodeMain.getChildren().addAll(nodeID,nodeVar,nodeMet);
+        
+        //Adds nodeMain to be the child of the AnchorPane which it will spawn in
+        nodeSpace.getChildren().add(nodeMain);
+	}
+	
+	public TextField getTitle()
+	{
+		return title;
+	}
+	
+	public TextArea getVars()
+	{
+		return var;
+	}
+	
+	public TextArea getMethods()
+	{
+		return meth;
+	}
+	
+	public DraggableNode getDragNode()
+	{
+		return nodeMain;
+	}
+	
 	public ID getID(){
 		return this.boxID;
 	}
