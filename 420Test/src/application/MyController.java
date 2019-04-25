@@ -14,11 +14,11 @@ import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
+//import org.apache.commons.io.FileUtils;
+//import org.apache.pdfbox.pdmodel.PDDocument;
+//import org.apache.pdfbox.pdmodel.PDPage;
+//import org.apache.pdfbox.pdmodel.PDPageContentStream;
+//import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 import javafx.application.Platform;
 import javafx.beans.property.DoubleProperty;
@@ -97,6 +97,8 @@ public class MyController implements Initializable {
         pane.setOnMousePressed(e -> {
             currentLine = new Line(e.getX(), e.getY(), e.getX(), e.getY());
             //System.out.print("got here");
+            lines.ensureCapacity(lines.size() + 5);
+            lines.add(currentLine);
             pane.getChildren().add(currentLine);
         });
 
@@ -137,10 +139,23 @@ public class MyController implements Initializable {
 	{	
 		nodeSpace.getChildren().clear();
 		boxes.clear();
+		lines.clear();
 		//FileChooser fc = new FileChooser();
 		
 		File file = fc.showOpenDialog(nodeSpace.getScene().getWindow());
 		Scanner scanner = new Scanner(file);
+		int numLines = scanner.nextInt();
+		for(int i = numLines; i > 0; --i)
+		{
+			double startX = scanner.nextDouble();
+			double startY = scanner.nextDouble();
+			double endX = scanner.nextDouble();
+			double endY = scanner.nextDouble();
+			Line l = new Line(startX, startY, endX, endY);
+			nodeSpace.getChildren().add(l);
+			lines.ensureCapacity(lines.size() + 1);
+			lines.add(l);
+		}
 		while(scanner.hasNext()) 
 		{
 			String title = scanner.nextLine();
@@ -178,6 +193,14 @@ public class MyController implements Initializable {
 		//FileChooser fc = new FileChooser();
 		File file = fc.showSaveDialog(nodeSpace.getScene().getWindow());
 		PrintWriter pw = new PrintWriter(file);
+		pw.println(lines.size());
+		for(Line line : lines)
+		{
+			pw.println(line.getStartX());
+			pw.println(line.getStartY());
+			pw.println(line.getEndX());
+			pw.println(line.getEndY());
+		}
 		for(Box box : boxes)
 		{
 			String title = box.getTitle().getText();
