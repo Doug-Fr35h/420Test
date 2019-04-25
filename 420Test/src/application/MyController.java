@@ -103,6 +103,10 @@ public class MyController implements Initializable {
 		Box t = new Box(nodeSpace, editPane, box.getID());	
 		
 		nodeSpace.getChildren().add(t);
+		
+		if(editPane.isVisible() == false) {
+			editPane.setVisible(true);
+		}
 	}
 	
 	@FXML
