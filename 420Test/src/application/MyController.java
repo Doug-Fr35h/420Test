@@ -142,7 +142,7 @@ public class MyController implements Initializable {
 	            ImageIO.write(renderedImage, "png", file);
 	        } catch (IOException ex) { ex.printStackTrace(); }
 	    }
-	    
+	    /*
 	    try (PDDocument doc = new PDDocument())
         {
             PDPage page = new PDPage();
@@ -173,7 +173,7 @@ public class MyController implements Initializable {
             
             doc.save(pdfPath);
         }
-	    
+	    /*
 	    
 	    
 	   //Convert FIle to String method
@@ -189,36 +189,6 @@ public class MyController implements Initializable {
         */
 	}
 	
-	/*
-	public void exportToPDF(){
-		WritableImage nodeshot = nodeSpace.snapshot(new SnapshotParameters(), null);
-        File file = new File("chart.png");
-
-        try {
-        	ImageIO.write(SwingFXUtils.fromFXImage(nodeshot, null), "png", file);
-        } catch (IOException e) {
-
-        }
-
-        PDDocument doc = new PDDocument();
-        PDPage page = new PDPage();
-        PDImageXObject pdimage;
-        PDPageContentStream content;
-        try {
-            pdimage = PDImageXObject.createFromFile("chart.png",doc);
-            content = new PDPageContentStream(doc, page);
-            content.drawImage(pdimage, 100, 100);
-            content.close();
-            doc.addPage(page);
-            doc.save("pdf_file.pdf");
-            doc.close();
-            file.delete();
-        } catch (IOException ex) {
-            Logger.getLogger(MyController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-	*/
 	
 	/*
 	* Need to add functionality where when a file is opened the old window closes
