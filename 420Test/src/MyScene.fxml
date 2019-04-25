@@ -15,13 +15,13 @@
 
 <AnchorPane fx:id="root" prefHeight="657.0" prefWidth="1021.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MyController">
   <children>
-    <MenuBar prefHeight="32.0" prefWidth="1021.0" AnchorPane.bottomAnchor="631.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <MenuBar prefHeight="32.0" prefWidth="1021.0">
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
                   <MenuItem mnemonicParsing="false" text="New" />
-            <MenuItem fx:id="loadFile" mnemonicParsing="false" onAction="#open" text="Open" />
-            <MenuItem mnemonicParsing="false" onAction="#save" text="Save" />
+            <MenuItem fx:id="loadFile" mnemonicParsing="false" onAction="#fileOpen" text="Open" />
+            <MenuItem mnemonicParsing="false" text="Save" />
                   <MenuItem mnemonicParsing="false" onAction="#exportToPNG" text="Export as PNG" />
             <MenuItem mnemonicParsing="false" onAction="#closeApp" text="Close" />
           </items>
@@ -30,7 +30,7 @@
         <Menu mnemonicParsing="false" text="View" />
       </menus>
     </MenuBar>
-      <VBox fx:id="butttonBox" alignment="TOP_CENTER" layoutX="836.0" layoutY="32.0" prefHeight="167.0" prefWidth="185.0">
+      <VBox fx:id="butttonBox" alignment="TOP_CENTER" layoutX="836.0" layoutY="32.0" prefHeight="167.0" prefWidth="185.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0">
          <children>
       <Button fx:id="cNode" mnemonicParsing="false" onAction="#createNode" prefHeight="38.0" prefWidth="172.0" text="Create Node" textAlignment="CENTER" wrapText="true">
                <VBox.margin>
@@ -50,7 +50,7 @@
          </children>
       </VBox>
       <AnchorPane fx:id="nodeSpace" layoutY="32.0" prefHeight="632.0" prefWidth="825.0" />
-      <VBox fx:id="editPane" alignment="TOP_CENTER" layoutX="836.0" layoutY="225.0" prefHeight="353.0" prefWidth="185.0">
+      <VBox fx:id="editPane" alignment="TOP_CENTER" layoutX="836.0" layoutY="225.0" prefHeight="353.0" prefWidth="185.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="225.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enter a Title:" textAlignment="CENTER" wrappingWidth="86.32763671875">
                <VBox.margin>
