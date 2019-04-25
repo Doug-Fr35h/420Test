@@ -183,40 +183,6 @@ public class MyController implements Initializable {
         	pdfPath = str.substring(0, indexOfLast) + ".pdf";
         System.out.println(pdfPath);
         */
-	    
-	    /*
-	    try (PDDocument doc = new PDDocument())
-        {
-            PDPage page = new PDPage();
-            doc.addPage(page);
-
-            // createFromFile is the easiest way with an image file
-            // if you already have the image in a BufferedImage, 
-            // call LosslessFactory.createFromImage() instead
-            String imagePath = file.toString();
-            PDImageXObject pdImage = PDImageXObject.createFromFile(imagePath, doc);
-            
-            // draw the image at full size at (x=20, y=20)
-            try (PDPageContentStream contents = new PDPageContentStream(doc, page))
-            {
-                // draw the image at full size at (x=20, y=20)
-                contents.drawImage(pdImage, 20, 20);
-                
-                // to draw the image at half size at (x=20, y=20) use
-                // contents.drawImage(pdImage, 20, 20, pdImage.getWidth() / 2, pdImage.getHeight() / 2); 
-            }
-            String str = imagePath;
-            
-            int indexOfLast = str.lastIndexOf(".");
-            String pdfPath = str;
-            if(indexOfLast >= 0) 
-            	pdfPath = str.substring(0, indexOfLast) + ".pdf";
-            
-            
-            doc.save(pdfPath);
-            
-        }
-	    */
 	}
 	
 	/*
