@@ -12,6 +12,12 @@ import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
+
 import javafx.application.Platform;
 import javafx.beans.property.DoubleProperty;
 import javafx.embed.swing.SwingFXUtils;
@@ -112,7 +118,7 @@ public class MyController implements Initializable {
 	}
 	
 	@FXML
-	public void exportToPNG(){
+	public void exportToPNG() throws IOException{
 		FileChooser fileChooser = new FileChooser();
 
 	    //Set extension filter
@@ -132,6 +138,85 @@ public class MyController implements Initializable {
 	            ImageIO.write(renderedImage, "png", file);
 	        } catch (IOException ex) { ex.printStackTrace(); }
 	    }
+	    
+	    try (PDDocument doc = new PDDocument())
+        {
+            PDPage page = new PDPage();
+            doc.addPage(page);
+            
+            String imagePath = file.toString();
+
+            // createFromFile is the easiest way with an image file
+            // if you already have the image in a BufferedImage, 
+            // call LosslessFactory.createFromImage() instead
+            PDImageXObject pdImage = PDImageXObject.createFromFile(imagePath, doc);
+            
+            // draw the image at full size at (x=20, y=20)
+            try (PDPageContentStream contents = new PDPageContentStream(doc, page))
+            {
+                // draw the image at full size at (x=20, y=20)
+                contents.drawImage(pdImage, 20, 20);
+                
+                // to draw the image at half size at (x=20, y=20) use
+                // contents.drawImage(pdImage, 20, 20, pdImage.getWidth() / 2, pdImage.getHeight() / 2); 
+            }
+            
+            String str = file.toString();
+            int indexOfLast = str.lastIndexOf(".");
+            String pdfPath = str;
+            if(indexOfLast >= 0) 
+            	pdfPath = str.substring(0, indexOfLast) + ".pdf";
+            
+            doc.save(pdfPath);
+        }
+	    
+	    
+	    
+	   //Convert FIle to String method
+	    /*
+	    
+	    String str = file.toString();
+        System.out.println(str);
+        int indexOfLast = str.lastIndexOf(".");
+        String pdfPath = str;
+        if(indexOfLast >= 0) 
+        	pdfPath = str.substring(0, indexOfLast) + ".pdf";
+        System.out.println(pdfPath);
+        */
+	    
+	    /*
+	    try (PDDocument doc = new PDDocument())
+        {
+            PDPage page = new PDPage();
+            doc.addPage(page);
+
+            // createFromFile is the easiest way with an image file
+            // if you already have the image in a BufferedImage, 
+            // call LosslessFactory.createFromImage() instead
+            String imagePath = file.toString();
+            PDImageXObject pdImage = PDImageXObject.createFromFile(imagePath, doc);
+            
+            // draw the image at full size at (x=20, y=20)
+            try (PDPageContentStream contents = new PDPageContentStream(doc, page))
+            {
+                // draw the image at full size at (x=20, y=20)
+                contents.drawImage(pdImage, 20, 20);
+                
+                // to draw the image at half size at (x=20, y=20) use
+                // contents.drawImage(pdImage, 20, 20, pdImage.getWidth() / 2, pdImage.getHeight() / 2); 
+            }
+            String str = imagePath;
+            
+            int indexOfLast = str.lastIndexOf(".");
+            String pdfPath = str;
+            if(indexOfLast >= 0) 
+            	pdfPath = str.substring(0, indexOfLast) + ".pdf";
+            
+            
+            doc.save(pdfPath);
+            
+        }
+	    */
 	}
 	
 	/*
