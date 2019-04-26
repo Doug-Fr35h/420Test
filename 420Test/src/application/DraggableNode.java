@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.VBox;
 
 class DraggableNode extends FlowPane {
 
@@ -22,6 +23,9 @@ class DraggableNode extends FlowPane {
     private boolean dragging = false;
     //Checks if Node is in front
     private boolean moveToFront = true;
+    
+    private ID id;
+    private VBox editor;
 
     //Constructor: Calls Initialization fxn
     public DraggableNode() {
@@ -45,7 +49,7 @@ class DraggableNode extends FlowPane {
         onMousePressedProperty().set(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-
+            	
                 // record the current mouse X and Y position on Node
                 mousex = event.getSceneX();
                 mousey = event.getSceneY();
@@ -101,6 +105,7 @@ class DraggableNode extends FlowPane {
             public void handle(MouseEvent event) {
 
                 dragging = false;
+                System.out.println(id);
             }
         });
 
@@ -115,6 +120,12 @@ class DraggableNode extends FlowPane {
     //Returns the view Node
     public Node getView() {
         return view;
+    }
+    
+    public void setID(ID boxID)
+    {
+    	id = boxID;
+    	//editor = edit;
     }
 
     //Sets current moveToFront to the input boolean moveToFront

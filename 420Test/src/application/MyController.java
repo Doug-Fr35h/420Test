@@ -71,7 +71,7 @@ public class MyController implements Initializable {
 	private AnchorPane nodeSpace;
 	
 	@FXML
-	private TextField titleText;
+	private TextField boxTitle;
 	
 	@FXML
 	private MenuItem loadFile;
@@ -88,7 +88,7 @@ public class MyController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		//propSpace.getChildren().add(titleText);		
+				
 		
 
 	}

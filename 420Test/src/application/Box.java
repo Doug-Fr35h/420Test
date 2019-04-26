@@ -38,6 +38,8 @@ class Box extends DraggableNode{
 	public Box(AnchorPane nodeSpace, VBox editor, ID identifyer)
 	{		
 		boxID = identifyer;
+		nodeMain.setID(boxID);
+		
 		//Sizes
         nodeMain.setPrefSize(100, 130);
         
@@ -108,6 +110,7 @@ class Box extends DraggableNode{
         
         //Adds nodeMain to be the child of the AnchorPane which it will spawn in
         nodeSpace.getChildren().add(nodeMain);
+        
 	}
 	
 	public Box(AnchorPane nodeSpace, String boxTitle, String boxVars, String boxMethods, double x, double y)
@@ -182,6 +185,8 @@ class Box extends DraggableNode{
         
         //Adds nodeMain to be the child of the AnchorPane which it will spawn in
         nodeSpace.getChildren().add(nodeMain);
+        
+        
 	}
 	
 	public TextField getTitle()
@@ -215,18 +220,11 @@ class Box extends DraggableNode{
 			}
 		});
 	}
-	
-	
-	/*
-	EventHandler<MouseEvent> boxOnMousePressedEventHandler = new EventHandler<MouseEvent>() {
-
-		@Override
-		public void handle(MouseEvent t) {
-			
-			
-		}
-	};
-	*/
+		
+	public void removeBox()
+	{
+		nodeMain.removeNode(nodeMain);
+	}
 	
 	
 	
