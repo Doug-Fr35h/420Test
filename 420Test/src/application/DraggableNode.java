@@ -105,7 +105,7 @@ class DraggableNode extends FlowPane {
             public void handle(MouseEvent event) {
 
                 dragging = false;
-                System.out.println(id);
+                //System.out.println(id);
             }
         });
 

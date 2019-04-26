@@ -111,6 +111,13 @@ class Box extends DraggableNode{
         //Adds nodeMain to be the child of the AnchorPane which it will spawn in
         nodeSpace.getChildren().add(nodeMain);
         
+        nodeMain.onMouseClickedProperty().set(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                System.out.println();
+            }
+        });
+        
 	}
 	
 	public Box(AnchorPane nodeSpace, String boxTitle, String boxVars, String boxMethods, double x, double y)
@@ -224,8 +231,5 @@ class Box extends DraggableNode{
 	public void removeBox()
 	{
 		nodeMain.removeNode(nodeMain);
-	}
-	
-	
-	
+	}	
 }
