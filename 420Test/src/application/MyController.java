@@ -259,26 +259,17 @@ public class MyController implements Initializable {
 	   
 	    try (PDDocument doc = new PDDocument())
         {
-            PDPage page = new PDPage();
+	    	PDPage page = new PDPage();
             doc.addPage(page);
             
             String imagePath = file.toString();
 
-            // createFromFile is the easiest way with an image file
-            // if you already have the image in a BufferedImage, 
-            // call LosslessFactory.createFromImage() instead
+            // creates a PDF object from an image file
             PDImageXObject pdImage = PDImageXObject.createFromFile(imagePath, doc);
             
-            // draw the image at full size at (x=20, y=20)
+            // draw the image
             try (PDPageContentStream contents = new PDPageContentStream(doc, page))
             {
-                // draw the image at full size at (x=20, y=20)
-                //contents.drawImage(pdImage, 0, 0);
-                
-                // to draw the image at half size at (x=20, y=20) use
-                //contents.drawImage(pdImage, 20, 20, pdImage.getWidth(), pdImage.getHeight()); 
-                
-                
                 PDRectangle box = page.getMediaBox();
                 double factor = Math.min(box.getWidth() / nodeSpace.getWidth(), box.getHeight() / nodeSpace.getHeight());
 
