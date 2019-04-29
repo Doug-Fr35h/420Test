@@ -127,7 +127,7 @@ public class classBox {
 		
 	}
 	
-	/**
+	/** 
 	 * 
 	 * @param newAttr
 	 */

@@ -22,7 +22,7 @@ public class relationship {
 	private arrow arrow2 = new arrow();
 	private ID uniqueID;
 	
-	/**
+	/**  
 	 * 
 	 * @param head
 	 * @param tail
