@@ -2,6 +2,11 @@ package application;
 
 import java.util.*;
 
+/**
+ * 
+ * @author zacharygarrettwhelpley
+ *
+ */
 public class ID {
 
 	private UUID uniqueID;
@@ -19,6 +24,10 @@ public class ID {
 		
 	}/**/
 	
+	/**
+	 * 
+	 * @param cB
+	 */
 	public ID(classBox cB) {
 		uniqueID = UUID.randomUUID();
 		classBoxIDmap.put(uniqueID, cB);
@@ -27,6 +36,10 @@ public class ID {
 		//return this;
 	}
 	
+	/**
+	 * 
+	 * @param R
+	 */
 	public ID(relationship R){
 		uniqueID = UUID.randomUUID();
 		relationshipIDmap.put(uniqueID, R);
@@ -35,23 +48,33 @@ public class ID {
 		//return this;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public UUID getID(){
 		return this.uniqueID;
 	}
 	
-
-	/*
-	 * (non-Javadoc)
-	 * @see java.lang.Object#toString()
+	/** 
+	 * 
 	 */
 	public String toString() {
 		return this.uniqueID.toString();
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public classBox getClassBox() {
 		return classBoxIDmap.get(this);
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public relationship getRelationship() {
 		return relationshipIDmap.get(this);
 	}

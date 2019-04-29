@@ -2,7 +2,7 @@ package application;
 
 import java.util.*;
 
-/*enum arrowType
+/*
 {
 	NONE, V_ARROW, EMPTYTRIANGLE, FILLEDTRIANGLE, EMPTYDIAMOND, FILLEDDIAMOND, //Add more as we find fit
 	//1		2			3				4				5			6			Number Correspondent 
@@ -22,6 +22,11 @@ public class relationship {
 	private arrow arrow2 = new arrow();
 	private ID uniqueID;
 	
+	/**  
+	 * 
+	 * @param head
+	 * @param tail
+	 */
 	public relationship(classBox head, classBox tail){
 		this.setRelationship(head, tail);
 		this.title = "";
@@ -31,9 +36,11 @@ public class relationship {
 		this.setArrow1(1);
 		this.setArrow2(1);
 		this.uniqueID = new ID(this);
-		
 	}
 	
+	/**
+	 * 
+	 */
 	public relationship(){
 		this.title = "";
 		this.multiplicity1 = "";
@@ -45,7 +52,9 @@ public class relationship {
 		
 	}
 	
-	// delete function:
+	/**
+	 * 
+	 */
 	public void delete(){
 		this.End1 = null;
 		this.End2 = null;
@@ -59,30 +68,58 @@ public class relationship {
 
 	//-----GETTERS-----GETTERS-----GETTERS-----GETTERS-----GETTERS-----GETTERS
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public ID getID(){
 		return this.uniqueID;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public classBox getEnd1(){
 		return this.End1;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public classBox getEnd2(){
 		return this.End2;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getTitle(){
 		return this.title;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getMultiplicity1(){
 		return this.multiplicity1;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getMultiplicity2(){
 		return this.multiplicity2;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean isDashed(){
 		return this.isdashed;
 	}
@@ -95,16 +132,29 @@ public class relationship {
 		return this.arrow2.type;
 	}/**/
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public int getArrow1(){
 		return this.arrow1.type;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public int getArrow2(){
 		return this.arrow2.type;
 	}
 	
 	//-----SETTERS-----SETTERS-----SETTERS-----SETTERS-----SETTERS-----SETTERS
 	
+	/**
+	 * 
+	 * @param head
+	 * @param tail
+	 */
 	public void setRelationship(classBox head, classBox tail){ //setRelationship(clicked, released)
 		this.End1 = head;
 		this.End2 = tail;
@@ -113,27 +163,47 @@ public class relationship {
 			End2.addConnection(this);
 	}
 	
-	
+	/**
+	 * 
+	 * @param s
+	 */
 	public void setTitle(String s){
 		this.title = s;
 	}
 	
+	/**
+	 * 
+	 * @param s
+	 */
 	public void setMultiplicity1(String s){
 		this.multiplicity1 = s;
 	}
 	
+	/**
+	 * 
+	 * @param s
+	 */
 	public void setMultiplicity2(String s){
 		this.multiplicity2 = s;
 	}
 	
+	/**
+	 * 
+	 */
 	public void dash(){
 		this.isdashed = true;
 	}
 	
+	/**
+	 * 
+	 */
 	public void undash(){
 		this.isdashed = false;
 	}
 	
+	/**
+	 * 
+	 */
 	public void toggleDash(){
 		this.isdashed = !isdashed;
 	}
@@ -142,6 +212,10 @@ public class relationship {
 		arrow1.type.
 	}/**/
 	
+	/**
+	 * 
+	 * @param t
+	 */
 	public void setArrow1(int t){
 		if( t >= 1 && t <=6 ){
 			arrow1.type = t;
@@ -150,6 +224,10 @@ public class relationship {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param t
+	 */
 	public void setArrow2(int t){
 		if( t >= 1 && t <=6 ){
 			arrow2.type = t;

@@ -6,6 +6,11 @@ import java.util.Map;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 
+/**
+ * 
+ * @author zacharygarrettwhelpley
+ *
+ */
 public class classBox {
 	
 	// classBox Variables
@@ -20,7 +25,9 @@ public class classBox {
 	private double width; //100 default
 	private double height; //130 default
 
-	//CONSTRUCTOR
+	/**
+	 * 
+	 */
 	public classBox() {
 		this.title = "Title";
 		this.attributes = "-";
@@ -36,7 +43,9 @@ public class classBox {
 		
 	}
 	
-	//Delete Function
+	/**
+	 * 
+	 */
 	public void delete(){
 		for (int i = 0; i < this.connections.length; i++){ //delete all relationships first
 			connections[i].delete();
@@ -52,29 +61,50 @@ public class classBox {
 	}
 	
 	//---SETTER---SETTER---SETTER---SETTER---SETTER---SETTER---SETTER---SETTER---
+	/**
+	 * 
+	 * @param newTitle
+	 */
 	public void setTitle(String newTitle){
 		title = newTitle;
 	}
 	
+	/**
+	 * 
+	 * @param newWidth
+	 */
 	public void setWidth(double newWidth){
 		if (newWidth > 0)
 			this.width = newWidth;
 	}
 	
+	/**
+	 * 
+	 * @param newHeight
+	 */
 	public void setHeight(double newHeight){
 		if (newHeight > 0)
 			this.height = newHeight;
 	}
 	
-	//For a possible automatic adjuster, just add 10 until satisfied
+	/**
+	 *For a possible automatic adjuster, just add 10 until satisfied 
+	 */
 	public void bumpHeight(){
 		height+=10;
 	}
 	
+	/**
+	 * 
+	 */
 	public void trimHeight(){
 		height-=5;
 	}
 	
+	/**
+	 * 
+	 * @param R
+	 */
 	public void addConnection(relationship R){
 		//System.out.println("addConnction() entered:");
 		//this.printConnections();
@@ -97,43 +127,79 @@ public class classBox {
 		
 	}
 	
+	/** 
+	 * 
+	 * @param newAttr
+	 */
 	public void setAttributes(String newAttr){
 		this.attributes = newAttr;
 	}
 	
+	/**
+	 * 
+	 * @param newOpps
+	 */
 	public void setOperations(String newOpps){
 		this.operations = newOpps;
 	}
 	
+	/**
+	 * 
+	 * @param newEC
+	 */
 	public void setExtraComponents(String newEC){
 		this.extraComponents = newEC;
 	}
 	
-	//this uses both x and y because duh
+	/**
+	 * this uses both x and y because duh
+	 * @param x
+	 * @param y
+	 */
 	public void setLocation(double x, double y){
 		this.xLocation = x;
 		this.yLocation = y;
 	}
 	
 	//---GETTERS---GETTERS---GETTERS---GETTERS---GETTERS---GETTERS---GETTERS---GETTERS---
+	/**
+	 * 
+	 * @return
+	 */
 	public String getTitle(){
 		return this.title;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getAttributes(){
 		return this.attributes;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getOperations(){
 		return this.operations;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getExtraComponents(){
 		return this.extraComponents;
 	}
 	
-	//Gives back the length minus the number of null 
-	//cases (so teh number of real relationships)
+	/**
+	 *
+	 * Gives back the length minus the number of null
+	 * cases (so the number of real relationships)
+	 * @return
+	 */
 	public int getRelationshipCount(){
 		int count =  this.connections.length;
 		for (int i=0; i < count; i++){
@@ -144,12 +210,20 @@ public class classBox {
 		return count;
 	}
 
-	//Gives back the actual length, nulls included
+	/**
+	 * Gives back the actual length, nulls included
+	 * @return
+	 */
 	public int getRelationshipLength(){
 		return this.connections.length;
 	}
 	
-	//returns the classBox at the other end of a relationship
+	/**
+	 *
+	 * returns the classBox at the other end of a relationship
+	 * @param R
+	 * @return
+	 */
 	public classBox getOtherEnd(relationship R){
 		if (R.getEnd1() == this){
 			return R.getEnd2();
@@ -160,7 +234,11 @@ public class classBox {
 		}
 	}
 	
-	//Accesses the connections[] array at passed in index
+	/**
+	 * Accesses the connections[] array at passed in index
+	 * @param index
+	 * @return
+	 */
 	public relationship getRelIndexOf(int index){
 		if (index >= 0 && index < connections.length){
 			return connections[index];
@@ -169,10 +247,18 @@ public class classBox {
 		return null;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public double getWidth(){
 		return this.width;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public double getHeight(){
 		return this.height;
 	}
@@ -185,12 +271,17 @@ public class classBox {
 			return this.yLocation;
 		}
 	
+	/**
+	* 
+	* @return
+	*/
 	public ID getID(){
 		return this.uniqueID;
 	}
 	
 	
-	/*
+	/**
+	 * 
 	 * In grid fashion, this method prints out the array of connections
 	 * Box's connections-----------------------------
 	 * | R1     | R2     | null   | null   | null   |
