@@ -239,7 +239,7 @@ public class MyController implements Initializable {
 		FileChooser fileChooser = new FileChooser();
 
 	    //Set extension filter
-	    fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PNG files (*.png)", "*.png"));
+	    fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF files (*.pdf)", "*.png"));
 
 	    //Prompt user to select a file
 	    File file = fileChooser.showSaveDialog(null);
