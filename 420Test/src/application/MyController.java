@@ -28,6 +28,62 @@ import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 //import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 import javafx.application.Platform;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.DoubleProperty;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
+import javafx.scene.image.WritableImage;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.Cursor;
+import javafx.scene.Group;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.StrokeLineCap;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.control.MenuItem;
+import java.util.*;
+
+import java.awt.Desktop;
+import java.awt.image.RenderedImage;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.URL;
+import java.nio.file.Files;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.imageio.ImageIO;
+
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.common.PDRectangle;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
+
+//import org.apache.commons.io.FileUtils;
+//import org.apache.pdfbox.pdmodel.PDDocument;
+//import org.apache.pdfbox.pdmodel.PDPage;
+//import org.apache.pdfbox.pdmodel.PDPageContentStream;
+//import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
+
+import javafx.application.Platform;
 import javafx.beans.property.DoubleProperty;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
@@ -60,66 +116,132 @@ public class MyController implements Initializable {
 
 	@FXML
 	private AnchorPane root;
-	
 	@FXML
-    private AnchorPane createSpace;
+	    private AnchorPane createSpace;
 
 	@FXML
-    private VBox buttonBox;
+	    private VBox buttonBox;
 
 	@FXML
 	private AnchorPane nodeSpace;
-	
 	@FXML
 	private TextField boxTitle;
-	
 	@FXML
 	private MenuItem loadFile;
-	
 	@FXML
 	private VBox editPane;
-	
+	private boolean lineMode = false;
 	public static ArrayList<Box> boxes = new ArrayList<Box>(10);
-	
 	public ArrayList<Line> lines = new ArrayList<Line>(10);
-	
 	@FXML
 	FileChooser fc = new FileChooser();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-				
-		
 
 	}
+
 	
-    private Line currentLine ;
-	
-	public Line createLine(ActionEvent event) {
-		
+	public EventHandler<MouseEvent> firstClick = new EventHandler<MouseEvent>() {
+		private Line currentLine = null;
+		private Node getBox(MouseEvent e) {
+		Node Bnode = e.getPickResult().getIntersectedNode();
+		while (!(Bnode instanceof DraggableNode) && Bnode != null) {
+		Bnode = Bnode.getParent(); 
+		}
+		return Bnode;
+		}
+		@Override
+		public void handle(MouseEvent e) {
+		if (!lineMode) {
+		return;
+		}
+		if (e.getEventType() == MouseEvent.MOUSE_PRESSED) {
+		DraggableNode.moveable = false;
+		Node Bnode = getBox(e);
+		if (Bnode == null) {
+		return;
+		}
+		currentLine = new Line();
+		currentLine.startXProperty().bind(Bindings.add(Bnode.layoutXProperty(), Bnode.getLayoutBounds().getWidth() / 2));
+		currentLine.startYProperty().bind(Bindings.add(Bnode.layoutYProperty(), Bnode.getLayoutBounds().getHeight() / 2));
+		currentLine.endXProperty().set(e.getSceneX());
+		currentLine.endYProperty().set(e.getSceneY());
+		nodeSpace.getChildren().add(currentLine);
+		} else if (e.getEventType() == MouseEvent.MOUSE_RELEASED) {
+		Node Enode = getBox(e);
+		if (Enode == null) {
+		nodeSpace.getChildren().remove(currentLine);
+		return;
+		}
+		currentLine.endXProperty().bind(Bindings.add(Enode.layoutXProperty(), Enode.getLayoutBounds().getWidth() / 2));
+		currentLine.endYProperty().bind(Bindings.add(Enode.layoutYProperty(), Enode.getLayoutBounds().getHeight() / 2));
+		nodeSpace.getChildren()
+		.filtered(n -> n instanceof DraggableNode)
+		.forEach(n -> n.toFront());
+		currentLine.toBack();
+		lines.add(currentLine);
+		currentLine = null;
+		DraggableNode.moveable = true;
+		} else if (e.getEventType() == MouseEvent.MOUSE_DRAGGED) {
+		if (currentLine == null) {
+		return;
+		}
+		currentLine.endXProperty().set(e.getSceneX());
+		currentLine.endYProperty().set(e.getSceneY());
+		}
+		//double x = Bnode.getLayoutX();
+		//double y = Bnode.getLayoutY();
+		//double x = e.getX();
+		//double y = e.getY();
+		//currentLine.setLayoutX(x);
+		//currentLine.setLayoutY(y);
+		//currentLine.startXProperty().bind(Bindings.add(Bnode.layoutBoundsProperty().getValue().getMinX());
+		//currentLine.startYProperty().bind(Bindings.add(Bnode.layoutYProperty(), e.getY()));
+		}
+		};
+
+		public void createLine(ActionEvent e) {
+		nodeSpace.setOnMousePressed(firstClick);
+		nodeSpace.setOnMouseDragged(firstClick);
+		nodeSpace.setOnMouseReleased(firstClick);
+		lineMode = true;
+		}
+
+		public void removeLineListeners() {
+		lineMode = false;
+		nodeSpace.removeEventHandler(MouseEvent.MOUSE_PRESSED, firstClick);
+		nodeSpace.removeEventHandler(MouseEvent.MOUSE_DRAGGED, firstClick);
+		nodeSpace.removeEventHandler(MouseEvent.MOUSE_RELEASED, firstClick);
+		}
+
+		/* 
+		    private Line currentLine ;
+		public Line createLine(ActionEvent event) {
 		System.out.print("inside create line");
-		
-        Pane pane = nodeSpace;
+		        Pane pane = nodeSpace;
 
-        pane.setOnMousePressed(e -> {
-            currentLine = new Line(e.getX(), e.getY(), e.getX(), e.getY());
-            //System.out.print("got here");
-            lines.ensureCapacity(lines.size() + 5);
-            lines.add(currentLine);
-            pane.getChildren().add(currentLine);
-        });
+		        pane.setOnMousePressed(e -> {
+		            currentLine = new Line(e.getX(), e.getY(), e.getX(), e.getY());
+		            //System.out.print("got here");
+		            lines.ensureCapacity(lines.size() + 5);
+		            lines.add(currentLine);
+		            pane.getChildren().add(currentLine);
+		        });
 
-        pane.setOnMouseDragged(e -> {
-            currentLine.setEndX(e.getX());
-            currentLine.setEndY(e.getY());
-            
-        });
-        pane.setOnMouseReleased(e ->{
-        	   
-        });
-        
-        return currentLine;
-	    }	
+		        pane.setOnMouseDragged(e -> {
+		            currentLine.setEndX(e.getX());
+		            currentLine.setEndY(e.getY());
+		            
+		        });
+		        pane.setOnMouseReleased(e ->{
+		           
+		        });
+		        
+		        return currentLine;
+		    }  
+		*/
+	
 
 	public void createNode() {
 		classBox box = new classBox();
