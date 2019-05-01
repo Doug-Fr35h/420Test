@@ -88,7 +88,6 @@ class Box extends DraggableNode{
         
 		title.setPromptText("Title");
 		title.setPrefWidth(100);
-		title.setEditable(false);
         nodeID.getChildren().add(title);
         
         //Add Text to var
