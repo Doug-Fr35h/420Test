@@ -1,6 +1,7 @@
 package application;
 
 
+
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 
@@ -50,7 +51,7 @@ public static boolean moveable = true;
         onMousePressedProperty().set(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            
+           
                 // record the current mouse X and Y position on Node
                 mousex = event.getSceneX();
                 mousey = event.getSceneY();
@@ -147,4 +148,3 @@ public static boolean moveable = true;
         getChildren().remove(n);
     }
 }
-
