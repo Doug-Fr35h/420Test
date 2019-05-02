@@ -6,10 +6,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-// Runs the programs9875018709409870987098709879986598
+/**
+ *  Runs the programs
+ * @author _______
+ *
+ */
 public class MyApplication extends Application {
     
-  
+	/**
+	 * 
+	 */
     @Override
     public void start(Stage primaryStage) {
         try {
@@ -23,7 +29,10 @@ public class MyApplication extends Application {
             e.printStackTrace();
         }
     }
-    
+    /**
+     * 
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }
