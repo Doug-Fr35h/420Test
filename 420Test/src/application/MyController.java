@@ -85,14 +85,17 @@ public class MyController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 
 	}
+
 	/**
-	* After createLine is called event handler will be used to bind a line to a node
-	* 
-	* @param MouseEvent e to first get the node that has been clicked in "getBox"
-	* Inside "handle", e Will check the eventType/mouseEvent to be: MOUSE_PRESSED, MOUSE_DRAGGED, MOUSE_RELEASED
-	*                 
-	* 
-	*/
+	 * After createLine is called event handler will be used to bind a line to a
+	 * node
+	 * 
+	 * @param MouseEvent e to first get the node that has been clicked in "getBox"
+	 *                   Inside "handle", e Will check the eventType/mouseEvent to
+	 *                   be: MOUSE_PRESSED, MOUSE_DRAGGED, MOUSE_RELEASED
+	 * 
+	 * 
+	 */
 	public EventHandler<MouseEvent> firstClick = new EventHandler<MouseEvent>() {
 		private Line currentLine = null;
 
@@ -148,21 +151,24 @@ public class MyController implements Initializable {
 
 		}
 	};
+
 	/**
-	* This function is called when the Create Line button is clicked, to create a line between two nodes
-	* which uses the event handler firstClick to determine what should be done based one 1)pressed 2) dragged
-	* and 3) released
-	*/
+	 * This function is called when the Create Line button is clicked, to create a
+	 * line between two nodes which uses the event handler firstClick to determine
+	 * what should be done based one 1)pressed 2) dragged and 3) released
+	 */
 	public void createLine() {
 		nodeSpace.setOnMousePressed(firstClick);
 		nodeSpace.setOnMouseDragged(firstClick);
 		nodeSpace.setOnMouseReleased(firstClick);
 		lineMode = true;
 	}
+
 	/**
-	* This function is called within createNode to remove the event handlers that are used to create lines
-	* to allow user to both create a new node and drag the nodes 
-	*/
+	 * This function is called within createNode to remove the event handlers that
+	 * are used to create lines to allow user to both create a new node and drag the
+	 * nodes
+	 */
 	public void removeLineListeners() {
 		lineMode = false;
 		nodeSpace.removeEventHandler(MouseEvent.MOUSE_PRESSED, firstClick);
@@ -170,11 +176,12 @@ public class MyController implements Initializable {
 		nodeSpace.removeEventHandler(MouseEvent.MOUSE_RELEASED, firstClick);
 	}
 
-
+	/**
+	 * This function creates a class box
+	 */
 	public void createNode() {
 		removeLineListeners();
 		classBox box = new classBox();
-//root.getChildren().addAll(box);
 		Box t = new Box(nodeSpace, editPane, box.getID());
 		boxes.ensureCapacity(boxes.size() + 5);
 		boxes.add(t);
@@ -184,17 +191,24 @@ public class MyController implements Initializable {
 		}
 	}
 
+	/**
+	 * This function closes the program
+	 */
 	@FXML
 	public void closeApp() {
 		Platform.exit();
 	}
 
+	/**
+	 * This function opens a file
+	 * 
+	 * @throws FileNotFoundException if file is not found
+	 */
 	@FXML
 	public void open() throws FileNotFoundException {
 		nodeSpace.getChildren().clear();
 		boxes.clear();
 		lines.clear();
-		//FileChooser fc = new FileChooser();
 		File file = fc.showOpenDialog(nodeSpace.getScene().getWindow());
 		Scanner scanner = new Scanner(file);
 		int numLines = scanner.nextInt();
@@ -236,9 +250,13 @@ public class MyController implements Initializable {
 		scanner.close();
 	}
 
+	/**
+	 * This program saves what is in the ULM editor at the time of saving
+	 * 
+	 * @throws FileNotFoundException if file is not found
+	 */
 	@FXML
 	public void save() throws FileNotFoundException {
-//FileChooser fc = new FileChooser();
 		File file = fc.showSaveDialog(nodeSpace.getScene().getWindow());
 		PrintWriter pw = new PrintWriter(file);
 		pw.println(lines.size());
@@ -271,24 +289,29 @@ public class MyController implements Initializable {
 		pw.close();
 	}
 
+	/**
+	 * This function exports what is currently in the UML editor as a PDF
+	 * 
+	 * @throws IOException
+	 */
 	@FXML
 	public void export() throws IOException {
 		FileChooser fileChooser = new FileChooser();
 
-		// Set extension filter
+// Set extension filter
 		fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF files (*.pdf)", "*.png"));
 
-		// Prompt user to select a file
+// Prompt user to select a file
 		File file = fileChooser.showSaveDialog(null);
 
 		if (file != null) {
 			try {
-				// Pad the capture area
+// Pad the capture area
 				WritableImage writableImage = new WritableImage((int) nodeSpace.getWidth(),
 						(int) nodeSpace.getHeight());
 				nodeSpace.snapshot(null, writableImage);
 				RenderedImage renderedImage = SwingFXUtils.fromFXImage(writableImage, null);
-				// Write the snapshot to the chosen file
+// Write the snapshot to the chosen file
 				ImageIO.write(renderedImage, "png", file);
 			} catch (IOException ex) {
 				ex.printStackTrace();
@@ -301,18 +324,18 @@ public class MyController implements Initializable {
 
 			String imagePath = file.toString();
 
-			// createFromFile is the easiest way with an image file
-			// if you already have the image in a BufferedImage,
-			// call LosslessFactory.createFromImage() instead
+// createFromFile is the easiest way with an image file
+// if you already have the image in a BufferedImage,
+// call LosslessFactory.createFromImage() instead
 			PDImageXObject pdImage = PDImageXObject.createFromFile(imagePath, doc);
 
-			// draw the image at full size at (x=20, y=20)
+// draw the image at full size at (x=20, y=20)
 			try (PDPageContentStream contents = new PDPageContentStream(doc, page)) {
-				// draw the image at full size at (x=20, y=20)
-				// contents.drawImage(pdImage, 0, 0);
+// draw the image at full size at (x=20, y=20)
+// contents.drawImage(pdImage, 0, 0);
 
-				// to draw the image at half size at (x=20, y=20) use
-				// contents.drawImage(pdImage, 20, 20, pdImage.getWidth(), pdImage.getHeight());
+// to draw the image at half size at (x=20, y=20) use
+// contents.drawImage(pdImage, 20, 20, pdImage.getWidth(), pdImage.getHeight());
 
 				PDRectangle box = page.getMediaBox();
 				double factor = Math.min(box.getWidth() / nodeSpace.getWidth(),
@@ -320,7 +343,7 @@ public class MyController implements Initializable {
 
 				float height = (float) (nodeSpace.getHeight() * factor);
 
-				// beware of inverted y axis here
+// beware of inverted y axis here
 				contents.drawImage(pdImage, 0, box.getHeight() - height, (float) (nodeSpace.getWidth() * factor),
 						height);
 
@@ -348,6 +371,9 @@ public class MyController implements Initializable {
 	FileChooser fileChooser = new FileChooser();
 	private Desktop desktop = Desktop.getDesktop();
 
+	/**
+	 * This function opens a file
+	 */
 	@FXML
 	public void fileOpen() {
 		loadFile.setOnAction(new EventHandler<ActionEvent>() {
@@ -368,8 +394,10 @@ public class MyController implements Initializable {
 			Logger.getLogger(MyController.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
-	
-	// Toggles editor
+
+	/**
+	 * This function toggles the editor
+	 */
 	public void toggleBoxEdit() {
 		if (editPane.isVisible() == true) {
 			editPane.setVisible(false);
@@ -377,29 +405,37 @@ public class MyController implements Initializable {
 			editPane.setVisible(true);
 		}
 	}
-	
-	// Sets CSS style to Light Mode
+
+	/**
+	 * This function sets the CSS style to light mode
+	 */
 	public void setLight() {
 		root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		root.getStylesheets().remove(getClass().getResource("DarkMode.css").toExternalForm());
 		root.getStylesheets().remove(getClass().getResource("SMode.css").toExternalForm());
 	}
-	
-	// Sets CSS style to Dark mode 
+
+	/**
+	 * This function sets the CSS style to dark mode
+	 */
 	public void setDark() {
 		root.getStylesheets().add(getClass().getResource("DarkMode.css").toExternalForm());
 		root.getStylesheets().remove(getClass().getResource("application.css").toExternalForm());
 		root.getStylesheets().remove(getClass().getResource("SMode.css").toExternalForm());
 	}
-	
-	// Sets CSS style to spaghetti mode
+
+	/**
+	 * This function sets the CSS style to spaghetti mode
+	 */
 	public void setSpaget() {
 		root.getStylesheets().add(getClass().getResource("SMode.css").toExternalForm());
 		root.getStylesheets().remove(getClass().getResource("application.css").toExternalForm());
 		root.getStylesheets().remove(getClass().getResource("DarkMode.css").toExternalForm());
 	}
-	
-	// Clears all nodes and lines from workspace
+
+	/**
+	 * This function clears all nodes and lines from workspace
+	 */
 	public void clearAll() {
 		nodeSpace.getChildren().clear();
 	}
