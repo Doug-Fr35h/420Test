@@ -368,7 +368,8 @@ public class MyController implements Initializable {
 			Logger.getLogger(MyController.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
-
+	
+	// Toggles editor
 	public void toggleBoxEdit() {
 		if (editPane.isVisible() == true) {
 			editPane.setVisible(false);
@@ -376,25 +377,29 @@ public class MyController implements Initializable {
 			editPane.setVisible(true);
 		}
 	}
-
+	
+	// Sets CSS style to Light Mode
 	public void setLight() {
 		root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		root.getStylesheets().remove(getClass().getResource("DarkMode.css").toExternalForm());
 		root.getStylesheets().remove(getClass().getResource("SMode.css").toExternalForm());
 	}
-
+	
+	// Sets CSS style to Dark mode 
 	public void setDark() {
 		root.getStylesheets().add(getClass().getResource("DarkMode.css").toExternalForm());
 		root.getStylesheets().remove(getClass().getResource("application.css").toExternalForm());
 		root.getStylesheets().remove(getClass().getResource("SMode.css").toExternalForm());
 	}
-
+	
+	// Sets CSS style to spaghetti mode
 	public void setSpaget() {
 		root.getStylesheets().add(getClass().getResource("SMode.css").toExternalForm());
 		root.getStylesheets().remove(getClass().getResource("application.css").toExternalForm());
 		root.getStylesheets().remove(getClass().getResource("DarkMode.css").toExternalForm());
 	}
 	
+	// Clears all nodes and lines from workspace
 	public void clearAll() {
 		nodeSpace.getChildren().clear();
 	}
