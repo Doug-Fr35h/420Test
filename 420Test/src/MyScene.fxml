@@ -27,7 +27,12 @@
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Edit" />
-        <Menu mnemonicParsing="false" text="View" />
+        <Menu mnemonicParsing="false" text="View">
+               <items>
+                  <MenuItem fx:id="lightMode" mnemonicParsing="false" onAction="#setLight" text="Light Mode" />
+                  <MenuItem fx:id="darkMode" mnemonicParsing="false" onAction="#setDark" text="Dark Mode" />
+                  <MenuItem fx:id="sMode" mnemonicParsing="false" onAction="#setSpaget" text="Spaghetti Mode" />
+               </items></Menu>
       </menus>
     </MenuBar>
       <VBox fx:id="butttonBox" alignment="TOP_CENTER" layoutX="836.0" layoutY="32.0" prefHeight="167.0" prefWidth="185.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0">
