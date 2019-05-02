@@ -7,9 +7,10 @@ import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 
 /**
- * 
+ * classBox is a model-end representation of the class box object in a UML diagram. 
+ * 		It represents only data about the class boxes and storable data for the view
+ * 		so that the view can solely reflect the model (such as location, width, and height) 
  * @author zacharygarrettwhelpley
- *
  */
 public class classBox {
 	
@@ -26,7 +27,7 @@ public class classBox {
 	private double height; //130 default
 
 	/**
-	 * 
+	 * classBox object constructor, contains default values
 	 */
 	public classBox() {
 		this.title = "Title";
@@ -44,7 +45,8 @@ public class classBox {
 	}
 	
 	/**
-	 * 
+	 *  delete function deletes all relationships of a box
+	 *  and then deletes itself from the map
 	 */
 	public void delete(){
 		for (int i = 0; i < this.connections.length; i++){ //delete all relationships first
@@ -62,15 +64,16 @@ public class classBox {
 	
 	//---SETTER---SETTER---SETTER---SETTER---SETTER---SETTER---SETTER---SETTER---
 	/**
-	 * 
+	 * setTitle takes in a string and sets the title to the new passed in string
 	 * @param newTitle
 	 */
 	public void setTitle(String newTitle){
-		title = newTitle;
+		this.title = newTitle;
 	}
 	
 	/**
-	 * 
+	 * setWidth takes in a double and sets the width to that double
+	 * assuming that it is greater than zero (an acceptable value)
 	 * @param newWidth
 	 */
 	public void setWidth(double newWidth){
@@ -79,7 +82,8 @@ public class classBox {
 	}
 	
 	/**
-	 * 
+	 * setHeight takes in a double and sets the height to that double
+	 * assuming that it is greater than zero (an acceptable value)
 	 * @param newHeight
 	 */
 	public void setHeight(double newHeight){
@@ -91,18 +95,20 @@ public class classBox {
 	 *For a possible automatic adjuster, just add 10 until satisfied 
 	 */
 	public void bumpHeight(){
-		height+=10;
+		this.height+=10;
 	}
 	
 	/**
-	 * 
+	 * decrements height by 5
 	 */
 	public void trimHeight(){
-		height-=5;
+		this.height-=5;
 	}
 	
 	/**
-	 * 
+	 * addConnection takes in a relationship and adds it to the list of relationships
+	 * if the list of connections is full, it will expand the array, but also places 
+	 * relationship in the last first null spot
 	 * @param R
 	 */
 	public void addConnection(relationship R){
@@ -128,7 +134,7 @@ public class classBox {
 	}
 	
 	/** 
-	 * 
+	 * setAttributes takes a string and sets attributes to that string
 	 * @param newAttr
 	 */
 	public void setAttributes(String newAttr){
@@ -136,7 +142,7 @@ public class classBox {
 	}
 	
 	/**
-	 * 
+	 * setOperatons takes a string and sets operations to that string
 	 * @param newOpps
 	 */
 	public void setOperations(String newOpps){
@@ -144,7 +150,7 @@ public class classBox {
 	}
 	
 	/**
-	 * 
+	 * setExtraComponents takes a string and sets extraComponents to that string
 	 * @param newEC
 	 */
 	public void setExtraComponents(String newEC){
@@ -152,6 +158,7 @@ public class classBox {
 	}
 	
 	/**
+	 * accepts an ordered pair and sets the location to that ordered pair
 	 * this uses both x and y because duh
 	 * @param x
 	 * @param y
@@ -163,42 +170,37 @@ public class classBox {
 	
 	//---GETTERS---GETTERS---GETTERS---GETTERS---GETTERS---GETTERS---GETTERS---GETTERS---
 	/**
-	 * 
-	 * @return
+	 * @return the title
 	 */
 	public String getTitle(){
 		return this.title;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * @return the attributes string
 	 */
 	public String getAttributes(){
 		return this.attributes;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * @return the operations string
 	 */
 	public String getOperations(){
 		return this.operations;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * @return the extraComponents string
 	 */
 	public String getExtraComponents(){
 		return this.extraComponents;
 	}
 	
 	/**
-	 *
 	 * Gives back the length minus the number of null
 	 * cases (so the number of real relationships)
-	 * @return
+	 * @return number of relationships
 	 */
 	public int getRelationshipCount(){
 		int count =  this.connections.length;
@@ -212,17 +214,17 @@ public class classBox {
 
 	/**
 	 * Gives back the actual length, nulls included
-	 * @return
+	 * @return length of relationship array
 	 */
 	public int getRelationshipLength(){
 		return this.connections.length;
 	}
 	
 	/**
-	 *
 	 * returns the classBox at the other end of a relationship
-	 * @param R
-	 * @return
+	 * @param R is the relationship refering to
+	 * @return the classBox that exists at the end of
+	 * 		the relationship refered to
 	 */
 	public classBox getOtherEnd(relationship R){
 		if (R.getEnd1() == this){
@@ -236,8 +238,8 @@ public class classBox {
 	
 	/**
 	 * Accesses the connections[] array at passed in index
-	 * @param index
-	 * @return
+	 * @param index of array 
+	 * @return the relationship refered to in the the relationship array
 	 */
 	public relationship getRelIndexOf(int index){
 		if (index >= 0 && index < connections.length){
@@ -248,32 +250,35 @@ public class classBox {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * @return the width of the classBox
 	 */
 	public double getWidth(){
 		return this.width;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * @return the height of the classBox
 	 */
 	public double getHeight(){
 		return this.height;
 	}
 	
 	//get location
+		/**
+		 * @return x coord
+		 */
 		public double getXLocation(){
 			return this.xLocation;
 		}
+		/**
+		 * @return y coord
+		 */
 		public double getYLocation(){
 			return this.yLocation;
 		}
 	
 	/**
-	* 
-	* @return
+	* @return the ID of classbox at hand
 	*/
 	public ID getID(){
 		return this.uniqueID;
@@ -281,7 +286,6 @@ public class classBox {
 	
 	
 	/**
-	 * 
 	 * In grid fashion, this method prints out the array of connections
 	 * Box's connections-----------------------------
 	 * | R1     | R2     | null   | null   | null   |
