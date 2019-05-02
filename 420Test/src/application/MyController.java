@@ -458,5 +458,22 @@ public class MyController implements Initializable {
 		}
 	}
 	
-
+	public void setLight() {
+		root.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		root.getStylesheets().remove(getClass().getResource("DarkMode.css").toExternalForm());
+		root.getStylesheets().remove(getClass().getResource("SMode.css").toExternalForm());
+	}
+	
+	public void setDark() {
+		root.getStylesheets().add(getClass().getResource("DarkMode.css").toExternalForm());
+		root.getStylesheets().remove(getClass().getResource("application.css").toExternalForm());
+		root.getStylesheets().remove(getClass().getResource("SMode.css").toExternalForm());
+	}
+	
+	public void setSpaget() {
+		root.getStylesheets().add(getClass().getResource("SMode.css").toExternalForm());
+		root.getStylesheets().remove(getClass().getResource("application.css").toExternalForm());
+		root.getStylesheets().remove(getClass().getResource("DarkMode.css").toExternalForm());
+	}
+	
 }
