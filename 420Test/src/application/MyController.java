@@ -194,7 +194,7 @@ public class MyController implements Initializable {
 		nodeSpace.getChildren().clear();
 		boxes.clear();
 		lines.clear();
-//FileChooser fc = new FileChooser();
+		//FileChooser fc = new FileChooser();
 		File file = fc.showOpenDialog(nodeSpace.getScene().getWindow());
 		Scanner scanner = new Scanner(file);
 		int numLines = scanner.nextInt();
@@ -208,6 +208,7 @@ public class MyController implements Initializable {
 			lines.ensureCapacity(lines.size() + 1);
 			lines.add(l);
 		}
+		scanner.nextLine();
 		while (scanner.hasNext()) {
 			String title = scanner.nextLine();
 			String vars = "";
