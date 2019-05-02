@@ -85,7 +85,14 @@ public class MyController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 
 	}
-
+	/**
+	* After createLine is called event handler will be used to bind a line to a node
+	* 
+	* @param MouseEvent e to first get the node that has been clicked in "getBox"
+	* Inside "handle", e Will check the eventType/mouseEvent to be: MOUSE_PRESSED, MOUSE_DRAGGED, MOUSE_RELEASED
+	*                 
+	* 
+	*/
 	public EventHandler<MouseEvent> firstClick = new EventHandler<MouseEvent>() {
 		private Line currentLine = null;
 
@@ -138,24 +145,24 @@ public class MyController implements Initializable {
 				currentLine.endXProperty().set(e.getSceneX());
 				currentLine.endYProperty().set(e.getSceneY());
 			}
-//double x = Bnode.getLayoutX();
-//double y = Bnode.getLayoutY();
-//double x = e.getX();
-//double y = e.getY();
-//currentLine.setLayoutX(x);
-//currentLine.setLayoutY(y);
-//currentLine.startXProperty().bind(Bindings.add(Bnode.layoutBoundsProperty().getValue().getMinX());
-//currentLine.startYProperty().bind(Bindings.add(Bnode.layoutYProperty(), e.getY()));
+
 		}
 	};
-
-	public void createLine(ActionEvent e) {
+	/**
+	* This function is called when the Create Line button is clicked, to create a line between two nodes
+	* which uses the event handler firstClick to determine what should be done based one 1)pressed 2) dragged
+	* and 3) released
+	*/
+	public void createLine() {
 		nodeSpace.setOnMousePressed(firstClick);
 		nodeSpace.setOnMouseDragged(firstClick);
 		nodeSpace.setOnMouseReleased(firstClick);
 		lineMode = true;
 	}
-
+	/**
+	* This function is called within createNode to remove the event handlers that are used to create lines
+	* to allow user to both create a new node and drag the nodes 
+	*/
 	public void removeLineListeners() {
 		lineMode = false;
 		nodeSpace.removeEventHandler(MouseEvent.MOUSE_PRESSED, firstClick);
@@ -163,24 +170,7 @@ public class MyController implements Initializable {
 		nodeSpace.removeEventHandler(MouseEvent.MOUSE_RELEASED, firstClick);
 	}
 
-	/*
-	 * private Line currentLine ; public Line createLine(ActionEvent event) {
-	 * System.out.print("inside create line"); Pane pane = nodeSpace;
-	 * 
-	 * pane.setOnMousePressed(e -> { currentLine = new Line(e.getX(), e.getY(),
-	 * e.getX(), e.getY()); //System.out.print("got here");
-	 * lines.ensureCapacity(lines.size() + 5); lines.add(currentLine);
-	 * pane.getChildren().add(currentLine); });
-	 * 
-	 * pane.setOnMouseDragged(e -> { currentLine.setEndX(e.getX());
-	 * currentLine.setEndY(e.getY());
-	 * 
-	 * }); pane.setOnMouseReleased(e ->{
-	 * 
-	 * });
-	 * 
-	 * return currentLine; }
-	 */
+
 	public void createNode() {
 		removeLineListeners();
 		classBox box = new classBox();
@@ -204,7 +194,7 @@ public class MyController implements Initializable {
 		nodeSpace.getChildren().clear();
 		boxes.clear();
 		lines.clear();
-//FileChooser fc = new FileChooser();
+		//FileChooser fc = new FileChooser();
 		File file = fc.showOpenDialog(nodeSpace.getScene().getWindow());
 		Scanner scanner = new Scanner(file);
 		int numLines = scanner.nextInt();
@@ -218,6 +208,7 @@ public class MyController implements Initializable {
 			lines.ensureCapacity(lines.size() + 1);
 			lines.add(l);
 		}
+		scanner.nextLine();
 		while (scanner.hasNext()) {
 			String title = scanner.nextLine();
 			String vars = "";

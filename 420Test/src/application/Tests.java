@@ -238,5 +238,13 @@ public class Tests {
 		assertTrue("testCoordsX() Failed", Box1.getOtherEnd(R1).getXLocation() == 69.0);
 		assertTrue("testCoordsY() Failed", Box1.getOtherEnd(R1).getYLocation() == 420.0);
 	}
+	
+	@Test
+	public void testIDConstructor() {
+		ID boxid = new ID(Box1);
+		ID relid = new ID(R1);
+		assertEquals(boxid.getClassBox(), Box1);
+		assertEquals(relid.getRelationship(), R1);
+	}
 
 }

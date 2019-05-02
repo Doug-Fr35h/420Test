@@ -1,7 +1,6 @@
 package application;
 
 
-
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 
@@ -28,13 +27,18 @@ public static boolean moveable = true;
     
     private ID id;
     private VBox editor;
-
-    //Constructor: Calls Initialization fxn
+    
+    /**
+     * Constructor: Calls Initialization function
+     */
     public DraggableNode() {
         init();
     }
 
-    //Constructor: Makes view == input node & calls initialization fxn
+    /**
+     * Constructor: Makes view == input node & calls initialization fxn
+     * @param view
+     */
     public DraggableNode(Node view) {
         this.view = view;
 
@@ -42,12 +46,14 @@ public static boolean moveable = true;
         init();
     }
 
-    private void init() {
 
-    // Creates Mouse Press event
-    //Sets scene coordinates to mouse
-    //Sets layout coordinates to variables representing the Node's coordinates
-    //Checks if the node is in front
+    private void init() {
+    	/**
+    	 * Creates Mouse Press event
+         * Sets scene coordinates to mouse
+         * Sets layout coordinates to variables representing the Node's coordinates
+         * Checks if the node is in front 
+    	 */
         onMousePressedProperty().set(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -65,14 +71,16 @@ public static boolean moveable = true;
             }
         });
 
-        //Creates event for mouse drag
-        //Finds the offset of the scene and mouse coordinates
-        // Adds the offset to the Node coordinate variables 
-        //Sets the newly offset Node coordinates as its own translation variable
-        //Applies it to the scene
-        //Sets dragging to true
-        // Sets the scene coordinates to the mouse coordinates
-        //repeats
+        /**
+         * Creates event for mouse drag
+         * Finds the offset of the scene and mouse coordinates
+         * Adds the offset to the Node coordinate variables 
+         * Sets the newly offset Node coordinates as its own translation variable
+         * Applies it to the scene
+         * Sets dragging to true
+         * Sets the scene coordinates to the mouse coordinates
+         * repeats
+         */
         onMouseDraggedProperty().set(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -104,7 +112,9 @@ public static boolean moveable = true;
             }
         });
         
-        //If Node is clicked, set drag to false
+        /**
+         * If Node is clicked, set drag to false
+         */
         onMouseClickedProperty().set(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -116,34 +126,53 @@ public static boolean moveable = true;
 
     }
 
-    //Returns if the node is dragging
+    /**
+     * Returns if the node is dragging
+     * @return drag boolean
+     */
     protected boolean isDragging() {
         return dragging;
     }
 
 
-    //Returns the view Node
+    /**
+     * Returns the view Node
+     * @return view Node
+     */
     public Node getView() {
         return view;
     }
-    
+    /**
+     * Set Box ID
+     * 
+     * @param boxID
+     */
     public void setID(ID boxID)
     {
     id = boxID;
     //editor = edit;
     }
 
-    //Sets current moveToFront to the input boolean moveToFront
+    /**
+     * Sets current moveToFront to the input boolean moveToFront
+     * @param moveToFront
+     */
     public void setMoveToFront(boolean moveToFront) {
         this.moveToFront = moveToFront;
     }
 
-    //Returns moveToFront
+    /**
+     * Returns moveToFront
+     * @return moveToFront boolean
+     */
     public boolean isMoveToFront() {
         return moveToFront;
     }
     
-    //Removes the Node n
+    /**
+     * Removes the Node n
+     * @param n
+     */
     public void removeNode(Node n) {
         getChildren().remove(n);
     }
