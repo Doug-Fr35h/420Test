@@ -35,7 +35,7 @@
                </items></Menu>
       </menus>
     </MenuBar>
-      <VBox fx:id="butttonBox" alignment="TOP_CENTER" layoutX="836.0" layoutY="32.0" prefHeight="167.0" prefWidth="185.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0">
+      <VBox fx:id="butttonBox" alignment="TOP_CENTER" layoutX="836.0" layoutY="32.0" prefHeight="223.0" prefWidth="185.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0">
          <children>
       <Button fx:id="cNode" mnemonicParsing="false" onAction="#createNode" prefHeight="38.0" prefWidth="172.0" text="Create Node" textAlignment="CENTER" wrapText="true">
                <VBox.margin>
@@ -52,10 +52,15 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Button>
+            <Button fx:id="clearAllNodes" mnemonicParsing="false" onAction="#clearAll" prefHeight="38.0" prefWidth="172.0" text="Clear All">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Button>
          </children>
       </VBox>
       <AnchorPane fx:id="nodeSpace" layoutY="32.0" prefHeight="632.0" prefWidth="825.0" />
-      <VBox fx:id="editPane" alignment="TOP_CENTER" layoutX="836.0" layoutY="225.0" prefHeight="353.0" prefWidth="185.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="225.0">
+      <VBox fx:id="editPane" alignment="TOP_CENTER" layoutX="836.0" layoutY="285.0" prefHeight="353.0" prefWidth="185.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="285.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enter a Title:" textAlignment="CENTER" wrappingWidth="86.32763671875">
                <VBox.margin>

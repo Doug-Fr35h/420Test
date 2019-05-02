@@ -394,5 +394,9 @@ public class MyController implements Initializable {
 		root.getStylesheets().remove(getClass().getResource("application.css").toExternalForm());
 		root.getStylesheets().remove(getClass().getResource("DarkMode.css").toExternalForm());
 	}
+	
+	public void clearAll() {
+		nodeSpace.getChildren().clear();
+	}
 
 }
